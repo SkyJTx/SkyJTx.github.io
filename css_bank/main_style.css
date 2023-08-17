@@ -32,6 +32,13 @@ hr {
     border: 1px solid #ffd7aa;
 }
 
+a {
+    color: #ffffff;
+    font-family: system-ui;
+    background-color: transparent;
+    text-decoration: none;
+}
+
 a:link {
     color: #ffffff;
     font-family: system-ui;
@@ -43,7 +50,7 @@ div {
     background-color: #161616;
     padding: 2%;
     margin: auto;
-    width: max-content;
+    width: 90%;
     height: max-content;
     border: 5px solid #ffd7aa;
 }
@@ -54,7 +61,6 @@ div {
     background-color: #292929;
     font-family: system-ui;
     font-size: 20px;
-    color: #ffd7aa;
     padding: 14px 16px;
     text-decoration: none;
     border: none;
@@ -67,6 +73,6 @@ div {
 }
 
 .navbar a:hover {
-    background-color: #f5c6c6;
+    background-color: #f48517;
 }
 
