@@ -16,25 +16,26 @@ h2 {
 
 p {
     font-family: system-ui;
-    font-size: 20px;
+    font-size: 3cqmin;
     color: #ffd7aa;
     text-align: left;
 }
 
 ul {
     font-family: system-ui;
-    font-size: 20px;
+    font-size: 3cqmin;
     color: #f5c6c6;
     text-align: left;
 }
 
 hr {
-    border: 1px solid #ffd7aa;
+    border: 0.1cqmin solid #ffd7aa;
 }
 
 a {
     color: #ffffff;
     font-family: system-ui;
+    font-size: 3cqmin;
     background-color: transparent;
     text-decoration: none;
 }
@@ -42,6 +43,7 @@ a {
 a:link {
     color: #ffffff;
     font-family: system-ui;
+    font-size: 3cqmin;
     background-color: transparent;
     text-decoration: none;
 }
@@ -52,7 +54,7 @@ div {
     margin: auto;
     width: 90%;
     height: max-content;
-    border: 5px solid #ffd7aa;
+    border: 1cqmin solid #ffd7aa;
 }
 
 .navbar {
@@ -60,15 +62,15 @@ div {
     width: 100%;
     background-color: #292929;
     font-family: system-ui;
-    font-size: 20px;
-    padding: 14px 16px;
+    font-size: 2.7cqmin;
+    padding: 1.5cqmin 1.6cqmin;
     text-decoration: none;
     border: none;
 }
 
 .navbar a {
     float: left;
-    padding: 16px;
+    padding: 1.5cqmin;
     text-decoration: none;
 }
 
