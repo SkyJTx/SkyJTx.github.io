@@ -48,6 +48,17 @@ a:link {
     text-decoration: none;
 }
 
+iframe {
+    border: 1cqmin solid #ffd7aa;
+    border-radius: 0.2cqmin;
+    background-color: #161616;
+    padding: 0%;
+    margin: 2%;
+    width: 95%;
+    overflow: hidden;
+    height: 100%;
+}
+
 div {
     background-color: #161616;
     padding: 2%;
@@ -78,3 +89,8 @@ div {
     background-color: #f48517;
 }
 
+code {
+    color: #ffffff;
+    font-family: 'Consolas', system-ui, sans-serif;
+    font-size: 2cqmin;
+}
