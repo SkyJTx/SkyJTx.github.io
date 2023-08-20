@@ -47,11 +47,20 @@ int detect_pattern3(const char *str){
         if (*temp == '1'){
             state = 1;
         }
+        else if (*temp != '0'){
+            return 0;
+        }
         temp++;
     }
     while (state == 1 && temp <= end){
         if (*temp == '0'){
             state = 2;
+        }
+        else if (*temp == '1'){
+            return detect_pattern3(temp);
+        }
+        else{
+            return 0;
         }
         temp++;
     }
