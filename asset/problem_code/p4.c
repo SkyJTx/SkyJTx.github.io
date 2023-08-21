@@ -42,29 +42,22 @@ int detect_pattern2(const char *str){
 int detect_pattern3(const char *str){
     int state = 0;
     char *temp = str;
-    char *end = str + strlen(str) - 1;
-    while (state == 0 && temp <= end){
+    while (state == 0 && *temp != '\0'){
         if (*temp == '1'){
-            state = 1;
-        }
-        else if (*temp != '0'){
-            return 0;
+            state++;
         }
         temp++;
     }
-    while (state == 1 && temp <= end){
+    while (state == 1 && *temp != '\0'){
         if (*temp == '0'){
-            state = 2;
+            state++;
         }
         else if (*temp == '1'){
             return detect_pattern3(temp);
         }
-        else{
-            return 0;
-        }
         temp++;
     }
-    while (state == 2 && temp <= end){
+    while (state == 2 && *temp != '\0'){
         if (*temp == '1'){
             return 1;
         }
