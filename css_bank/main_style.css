@@ -7,6 +7,12 @@ article {
     margin: 5%
 }
 
+hr {
+    border: 0.1vw solid #ffd7aa;
+    margin: 0%;
+    padding: 0%;
+}
+
 h1 {
     color: #ffb900;
     font-family: system-ui;
@@ -75,10 +81,6 @@ iframe {
     width: 95%;
     overflow: hidden;
     height: 100%;
-}
-
-iframe {
-    margin: 0%;
 }
 
 nav div {
