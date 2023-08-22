@@ -4,6 +4,8 @@
         <link rel="stylesheet" href="/css_bank/main_style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/marked@3.0.6/marked.min.js"></script>
+        <script src="/script/markdown_to_html.js"></script>
         <title>C Topics</title>
     </head>
     <body>
@@ -18,7 +20,10 @@
         </header>
         <hr>
         <article>
-            <p>No commment here!</p>
+            <div id="markdown-content"></div>
+            <script>
+                displayMarkdownAsHTML("markdown-content", "/asset/markdown/C_topic.md");
+            </script>
         </article>
         <hr>
         <footer>
