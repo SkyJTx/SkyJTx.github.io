@@ -125,8 +125,10 @@ footer p {
     border: none;
 }
 
-article pre {
+.code {
     font-family: system-ui;
     font-size: 2.5vw;
     color: #ffd7aa;
+    border: #ffd7aa 0.5vw solid;
+    padding: 2.5vw;
 }
