@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Problem 4</title>
+        <script src="/script/code_to_html.js"></script>
     </head>
     <body>
         <nav>
@@ -18,10 +19,12 @@
         </header>
         <hr>
         <article>
-            <script src="/script/resizeiFrame.js"></script>
-            <iframe src="/asset/problem_code/p4.c" title="p4.c" seamless="seamless" onload="resizeIframe(this)">
-                Error occured!
-            </iframe>
+            <pre id="content"></pre>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    loadAndDisplayCode('content', '/asset/problem_code/p4.c');  // Adjust the parameters accordingly
+                  });
+            </script>
         </article>
         <hr>
         <footer>

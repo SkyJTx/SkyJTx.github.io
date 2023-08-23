@@ -1,4 +1,4 @@
-function loadMarkdownFile(filePath, callback) {
+function loadFile(filePath, callback) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -15,9 +15,16 @@ function convertMarkdownToHTML(markdownText) {
   
 function displayMarkdownAsHTML(elementId, markdownFilePath) {
     const targetElement = document.getElementById(elementId);
-    loadMarkdownFile(markdownFilePath, function(markdownText) {
+    loadFile(markdownFilePath, function(markdownText) {
         const html = convertMarkdownToHTML(markdownText);
         targetElement.innerHTML = html;
     });
 }
-  
+
+function displayTextAsHTML(elementId, textFilePath) {
+    const targetElement = document.getElementById(elementId);
+    loadFile(textFilePath, function(Text) {
+        const html = Text;
+        targetElement.innerHTML = html;
+    });
+}
