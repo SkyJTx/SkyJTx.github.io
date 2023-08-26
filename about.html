@@ -4,8 +4,9 @@
         <link rel="stylesheet" href="/css_bank/main_style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Problem 3</title>
-        <script src="/script/code_to_html.js"></script>
+        <title>SkyJT's Information</title>
+        <script src="https://cdn.jsdelivr.net/npm/marked@3.0.6/marked.min.js"></script>
+        <script src="/script/markdown_to_html.js"></script>
     </head>
     <body>
         <script src="/script/constructor.js"></script>
@@ -13,15 +14,13 @@
             createNavbar();
         </script>
         <header>
-            <h1>Count zeros in a string</h1>
+            <h1>About Me</h1>
         </header>
         <hr>
         <article>
-            <pre id="content" class="code"></pre>
+            <div id="markdown-content"></div>
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    loadAndDisplayCode('content', '/asset/problem_code/p3.c'); 
-                  });
+                displayMarkdownAsHTML("markdown-content", "/README.md");
             </script>
         </article>
         <script>

@@ -27,6 +27,34 @@ h2 {
     font-size: 4vw;
 }
 
+h3 {
+    color: #ffb900;
+    font-family: system-ui;
+    text-align: center;
+    font-size: 3vw;
+}
+
+h4 {
+    color: #ffb900;
+    font-family: system-ui;
+    text-align: center;
+    font-size: 2.5vw;
+}
+
+h5 {
+    color: #ffb900;
+    font-family: system-ui;
+    text-align: center;
+    font-size: 2vw;
+}
+
+h6 {
+    color: #ffb900;
+    font-family: system-ui;
+    text-align: center;
+    font-size: 1.5vw;
+}
+
 p {
     font-family: system-ui;
     font-size: 2.5vw;
@@ -126,7 +154,17 @@ footer p {
 }
 
 .code {
+    background-color: #161616;
+    border: 1vw solid #ffd7aa;
+    border-radius: 0.2vw;
+    padding: 2%;
     font-family: system-ui;
     font-size: 2.5vw;
     color: #ffd7aa;
+}
+
+#markdown-content {
+    background-color: #161616;
+    border: 1vw solid #ffd7aa;
+    border-radius: 0.2vw;
 }

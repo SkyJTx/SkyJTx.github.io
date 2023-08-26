@@ -9,12 +9,10 @@
         <title>Reviewing C Learning Book</title>
     </head>
     <body>
-        <nav>
-            <div class="navbar">
-                <a href="/index.html">Homepage</a>
-                <a href="/works_table.html">Works Table</a>
-            </div>
-        </nav>
+        <script src="/script/constructor.js"></script>
+        <script>
+            createNavbar();
+        </script>
         <header>
             <h1>Reviewing C Learning Book</h1>
         </header>
@@ -25,10 +23,9 @@
                 displayMarkdownAsHTML("markdown-content", "https://raw.githubusercontent.com/12inNe/12in/site/event/TurboC_review.md");
             </script>
         </article>
-        <hr>
-        <footer>
-            <p>Version 0.3.0 | Mr. Nattakarn Khumsupha.</p>
-        </footer>
+        <script>
+            createFooter();
+        </script>
     </body>
 </html>
         
