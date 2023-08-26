@@ -107,7 +107,7 @@ iframe {
     padding: 0%;
     margin: 2%;
     width: 95%;
-    overflow: hidden;
+    overflow: auto;
     height: 100%;
 }
 
@@ -119,6 +119,7 @@ nav div {
 }
 
 body div {
+    overflow: auto;
     padding: 2%;
 }
 
@@ -154,6 +155,7 @@ footer p {
 }
 
 .code {
+    overflow: auto;
     background-color: #161616;
     border: 1vw solid #ffd7aa;
     border-radius: 0.2vw;
@@ -164,6 +166,7 @@ footer p {
 }
 
 #markdown-content {
+    overflow: auto;
     background-color: #161616;
     border: 1vw solid #ffd7aa;
     border-radius: 0.2vw;
