@@ -165,7 +165,7 @@ footer p {
     color: #ffd7aa;
 }
 
-#markdown-content {
+.markdown {
     overflow: auto;
     background-color: #161616;
     border: 1vw solid #ffd7aa;
