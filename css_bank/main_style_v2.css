@@ -1,0 +1,13 @@
+/*New style that will replace main_style.css*/
+
+/*mobile mode*/
+
+
+
+/*desktop mode*/
+
+@media only screen and (min-width: 1024px){}
+
+/*tablet mode*/
+
+@media only screen and (min-width: 768px) and (max-width: 1023px){}

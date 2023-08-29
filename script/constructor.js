@@ -34,3 +34,13 @@ function createFooter() {
     document.body.appendChild(hr);
     document.body.appendChild(footer);
 }
+
+function createHeader(headerText) {
+    const header = document.createElement('header');
+    const headerH1 = document.createElement('h1');
+    const hr = document.createElement('hr');
+    headerH1.textContent = headerText;
+    header.appendChild(headerH1);
+    document.body.insertBefore(header, document.querySelector('.content'));
+    document.body.insertBefore(hr, document.querySelector('.content'));
+}
