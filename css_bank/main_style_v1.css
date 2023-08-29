@@ -1,10 +1,10 @@
-/*New style that will replace main_style.css*/
-
-/*desktop mode*/
-
 body {
     background-color:	#303030;
     margin: 0%;
+}
+
+article {
+    margin: 5%
 }
 
 hr {
@@ -57,14 +57,14 @@ h6 {
 
 p {
     font-family: system-ui;
-    font-size: 2vw;
+    font-size: 2.5vw;
     color: #ffd7aa;
     text-align: left;
 }
 
 ul {
     font-family: system-ui;
-    font-size: 2vw;
+    font-size: 2.5vw;
     color: #f5c6c6;
     text-align: left;
 }
@@ -85,46 +85,42 @@ a {
 a:link {
     color: #ffffff;
     font-family: system-ui;
-    font-size: 2vw;
+    font-size: 2.5vw;
     background-color: transparent;
     text-decoration: none;
-}
-
-img {
-    width: 100%;
-    height: auto;
 }
 
 nav {
     margin: 0%;
 }
 
-header {
-    margin: 0%;
+a img {
+    border: 0;
+    width: 2.5vw;
+    height: auto;
 }
 
-article {
-    margin: 5%
-}
-
-section {
-    margin: 0%;
+iframe {
+    border: 1vw solid #ffd7aa;
+    border-radius: 0.2vw;
+    background-color: #161616;
     padding: 0%;
+    margin: 2%;
+    width: 95%;
+    overflow: auto;
+    height: 100%;
 }
 
-footer {
-    margin: 0%;
-}
-
-footer p {
-    color: #ffffff;
-    font-family: system-ui;
-    font-size: 2.5vw;
-    text-align: center;
+nav div {
+    background-color: #161616;
     padding: 2%;
-    margin: 0%;
-    border: none;
+    height: max-content;
+    border: 1vw solid #ffd7aa;
+}
 
+body div {
+    overflow: auto;
+    padding: 2%;
 }
 
 .navbar {
@@ -140,7 +136,7 @@ footer p {
 }
 
 .navbar a {
-    padding: 2vw 2vw;
+    padding: 1.5vw 1.5vw;
     text-decoration: none;
 }
 
@@ -148,14 +144,14 @@ footer p {
     background-color: #f48517;
 }
 
-.contact {
-    margin: 5%;
-}
-
-.contact img {
-    border: 0;
-    width: 2.5vw;
-    height: auto;
+footer p {
+    color: #ffffff;
+    font-family: system-ui;
+    font-size: 2.5vw;
+    text-align: center;
+    padding: 2%;
+    margin: 0%;
+    border: none;
 }
 
 .code {
@@ -174,14 +170,14 @@ footer p {
     background-color: #161616;
     border: 1vw solid #ffd7aa;
     border-radius: 0.2vw;
-    padding: 2%;
 }
 
-.markdown img {
-    width: 100%;
-    height: min-content;
+.contact {
+    margin: 5%;
 }
 
-/*mobile mode*/
-
-@media only screen and (max-width: 600px) {}
+.contact img {
+    border: 0;
+    width: 2.5vw;
+    height: auto;
+}
