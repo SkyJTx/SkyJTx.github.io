@@ -178,8 +178,8 @@ footer p {
 }
 
 .markdown img {
-    width: 100%;
-    height: min-content;
+    max-width: 100%;
+    height: auto;
 }
 
 /*mobile mode*/
