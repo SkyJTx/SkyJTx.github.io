@@ -29,3 +29,16 @@
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=skyjtx&show_icons=true&theme=dark&bg_color=000000&locale=en" alt="skyjtx" /></p>
 
+<p>Website Version: 0.4.0</p>
+<p>Update: </p>
+<ul>
+    <li>
+        <p>Animated Element</p>
+    </li>
+    <li>
+        <p>Better Navigation Bar</p>
+    </li>
+    <li>
+        <p>Mobile Compatibility</p>
+    </li>
+</ul>

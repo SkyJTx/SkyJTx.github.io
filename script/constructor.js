@@ -1,23 +1,22 @@
-function createNavbar() {
-    const navbar = document.createElement('nav');
-    navbar.classList.add('navbar');
+let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
 
-    const homepageLink = document.createElement('a');
-    homepageLink.href = '/index.html';
-    homepageLink.textContent = 'Homepage';
-    navbar.appendChild(homepageLink);
+function createNavbar(nav_dict = nav) {
+    const nav = document.createElement('nav');
+    nav.classList.add('navbar');
+    const ul = document.createElement('ul');
 
-    const worksTableLink = document.createElement('a');
-    worksTableLink.href = '/works_table.html';
-    worksTableLink.textContent = 'Works Table';
-    navbar.appendChild(worksTableLink);
+    for (let key in nav_dict) {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = nav_dict[key];
+        link.textContent = key;
+        li.appendChild(link);
+        ul.appendChild(li);
+    }
 
-    const aboutMeLink = document.createElement('a');
-    aboutMeLink.href = '/about.html';
-    aboutMeLink.textContent = 'About Me';
-    navbar.appendChild(aboutMeLink);
+    nav.appendChild(ul);
 
-    document.body.insertBefore(navbar, document.querySelector('.content'));
+    document.body.insertBefore(nav, document.querySelector('.content'));
 }
 
 function createFooter() {
@@ -25,7 +24,7 @@ function createFooter() {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
-    const text = document.createTextNode('Version 0.3.0 | Mr. Nattakarn Khumsupha.');
+    const text = document.createTextNode('Version 0.4.0 | Mr. Nattakarn Khumsupha.');
     footer.appendChild(text);
 
     document.body.appendChild(hr);
