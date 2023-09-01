@@ -78,6 +78,7 @@ h1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     font-size: 5vw;
+    font-weight: bold;
     transition: var(--main-animation-transition);
 }
 
@@ -238,17 +239,55 @@ article {
     margin: 5%;
 }
 
-.contact img {
+.contact ul {
+    margin: 0%;
+    padding: 0%;
+    text-align: center;
+}
+
+.contact ul li {
+    margin: 0.5vw 0.5vw;
+    border: 0.5vw solid var(--main-color-border);
+    border-radius: 1vw;
+    box-shadow: 0px 0px 2vw var(--main-color-shadow);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact ul li:hover {
+    background-color: var(--main-color-hover);
+    transition: var(--main-animation-transition);
+}
+
+.contact ul li a {
+    padding: 5vw;
+    width: 5vw;
+    max-height: 5vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact ul li a img {
     border: 0;
-    width: 2.5vw;
-    height: auto;
+    width: 5vw;
+    max-height: 5vw;
+}
+
+.contact ul li a p {
+    margin: -100%;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: var(--main-color-text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /*Code Block Class*/
 
 .code {
     overflow: auto;
-    
     border-radius: 1vw;
     padding: 2%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -260,14 +299,25 @@ article {
 
 .markdown {
     overflow: auto;
-    
     border-radius: 1.5vw;
     padding: 2%;
 }
 
-.markdown img {
-    max-width: 100%;
-    height: auto;
+.markdown.contact {
+    display: block;
+    margin: 0 auto;
+    max-width: 50%;
+    border-radius: 0.4vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.markdown.contact img{
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 0.5vw 0.5vw;
+    display: inline-flex;
+    transition: var(--main-animation-transition);
 }
 
 /*Mobile Mode*/
@@ -313,6 +363,10 @@ article {
         display: block;
     }
 
+    .contact ul li a p {
+        font-size: 0px;
+    }
+
     .footer {
         font-size: 4vw;
     }
@@ -322,8 +376,12 @@ article {
     }
 
     .markdown {
-        border: 2vw solid var(--main-color-border);
         border-radius: 0.4vw;
+    }
+
+    .markdown.contact {
+        max-width: 100%;
+        box-shadow: none;
     }
 
 }
