@@ -1,3 +1,28 @@
+/*Global Variables*/
+
+:root {
+    /*Color*/
+    --main-color-background: #303030;
+    --main-color-navbar: #292929;
+    --main-color-hover: #646464;
+    --main-color-highlight: #f48517;
+    --main-color-header: #ffb900;
+    --main-color-text: #ffd7aa;
+    --main-color-border: #ffd7aa;
+    --main-color-a: #ffffff;
+    --main-color-box: #161616;
+    --main-color-shadow: #000000;
+    --main-color-scheme: dark;
+
+    /*Animation*/
+    --main-animation-transition: 0.4s ease-in-out;
+    --main-animation-fadein: fadeinFromAbove 0.4s;
+    --main-animation-slide: slideFromLeft 0.4s;
+    --main-animation-strecht: strechtLine 0.4s;
+}
+
+/*Animation Templates*/
+
 @keyframes fadeinFromAbove {
     from {
         opacity: 0;
@@ -32,104 +57,111 @@
     }
 }
 
-/*desktop mode*/
+/*Desktop Mode (Global Properties)*/
 
 body {
-    background-color:	#303030;
+    background-color: var(--main-color-background);
     margin: 0%;
     overflow: auto;
+    color-scheme: var(--main-color-scheme);
 }
 
 hr {
-    border: 0.1vw solid #ffd7aa;
+    border: 0.1vw solid var(--main-color-border);
     margin: 0%;
     padding: 0%;
-    animation: strechtLine 0.5s;
+    animation: var(--main-animation-strecht);
 }
 
 h1 {
-    color: #ffb900;
+    color: var(--main-color-header);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     font-size: 5vw;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
 
 h2 {
-    color: #ffb900;
+    color: var(--main-color-header);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    font-size: 4vw;
-    transition: 0.4s ease-in-out;
+    font-size: 3.5vw;
+    transition: var(--main-animation-transition);
 }
 
 h3 {
-    color: #ffb900;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 3vw;
-    transition: 0.4s ease-in-out;
-}
-
-h4 {
-    color: #ffb900;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 2.5vw;
-    transition: 0.4s ease-in-out;
-}
-
-h5 {
-    color: #ffb900;
+    color: var(--main-color-header);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     font-size: 2vw;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
 
-h6 {
-    color: #ffb900;
+h4 {
+    color: var(--main-color-header);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
     font-size: 1.5vw;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
+}
+
+h5 {
+    color: var(--main-color-header);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    font-size: 1vw;
+    transition: var(--main-animation-transition);
+}
+
+h6 {
+    color: var(--main-color-header);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    font-size: 0.5vw;
+    transition: var(--main-animation-transition);
 }
 
 p {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2vw;
-    color: #ffd7aa;
+    font-size: 1.5vw;
+    color: var(--main-color-text);
     text-align: left;
 }
 
 ul {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2vw;
-    color: #f5c6c6;
+    font-size: 1.5vw;
+    color: var(--main-color-text);
     text-align: left;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
 
 a {
-    color: #ffffff;
+    color: var(--main-color-a);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2vw;
+    font-size: 1.5vw;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
+}
+
+a:hover {
+    color: var(--main-color-highlight);
+    transition: var(--main-animation-transition);
 }
 
 a:link {
-    color: #ffffff;
+    color: var(--main-color-a);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
 
 img {
     width: 100%;
     height: auto;
+    transition: var(--main-animation-transition);
 }
 
 nav {
@@ -138,13 +170,18 @@ nav {
 
 header {
     margin: 0%;
-    animation: fadeinFromAbove 1s;
+    animation: var(--main-animation-fadein);
 }
 
 article {
     margin: 5%;
-    animation: slideFromLeft 1s;
+    padding: 5% 5% 5% 5%;
+    animation: var(--main-animation-slide);
+    border-radius: 1vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/*Footer Class*/
 
 .footer {
     overflow: auto;
@@ -152,20 +189,24 @@ article {
     margin: 0%;
     padding: 2%;
     height: max-content;
-    color: #ffd7aa;
+    background-color: #292929;
+    color: var(--main-color-text);
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
+
+/*Navigation Bar Class*/
 
 .navbar ul {
     list-style-type: none;
     margin: 0%;
     padding: 0%;
     overflow: hidden;
-    background-color: #292929;
+    background-color: var(--main-color-navbar);
     border: none;
+    box-shadow: 0px 0px 2vw var(--main-color-shadow);
 }
 
 .navbar ul li {
@@ -174,23 +215,24 @@ article {
 
 .navbar ul li a {
     display: block;
-    color: #ffffff;
-    padding: 15px 15px;
+    color: var(--main-color-a);
+    padding: 2.5vh 2.5vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 20px;
+    font-size: 2.5vh;
     text-align: center;
     text-decoration: none;
-    transition: 0.4s ease-in-out;
+    transition: var(--main-animation-transition);
 }
 
 .navbar ul li a.active {
-    background-color: #f48517;
+    background-color: var(--main-color-highlight);
 }
-
 
 .navbar ul li a:hover:not(.active) {
-    background-color: #f48517;
+    background-color: var(--main-color-hover);
 }
+
+/*Contact Class*/
 
 .contact {
     margin: 5%;
@@ -202,22 +244,24 @@ article {
     height: auto;
 }
 
+/*Code Block Class*/
+
 .code {
     overflow: auto;
-    background-color: #161616;
-    border: 1vw solid #ffd7aa;
-    border-radius: 0.2vw;
+    
+    border-radius: 1vw;
     padding: 2%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2vw;
-    color: #ffd7aa;
+    font-size: 1.5vw;
+    color: var(--main-color-text);
 }
+
+/*Markdown Block Class*/
 
 .markdown {
     overflow: auto;
-    background-color: #161616;
-    border: 1vw solid #ffd7aa;
-    border-radius: 0.2vw;
+    
+    border-radius: 1.5vw;
     padding: 2%;
 }
 
@@ -226,7 +270,7 @@ article {
     height: auto;
 }
 
-/*mobile mode*/
+/*Mobile Mode*/
 
 @media only screen and (max-width: 600px) {
     h1 {
@@ -278,7 +322,7 @@ article {
     }
 
     .markdown {
-        border: 2vw solid #ffd7aa;
+        border: 2vw solid var(--main-color-border);
         border-radius: 0.4vw;
     }
 

@@ -19,15 +19,23 @@ function createNavbar(nav_dict = nav) {
     document.body.insertBefore(nav, document.querySelector('.content'));
 }
 
+function setActiveNav(nav_name) {
+    const nav = document.querySelector('nav');
+    const nav_links = nav.querySelectorAll('a');
+    nav_links.forEach((link) => {
+        if (link.textContent == nav_name) {
+            link.classList.add('active');
+        }
+    });
+}
+
 function createFooter() {
-    const hr = document.createElement('hr');
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
     const text = document.createTextNode('Version 0.4.0 | Mr. Nattakarn Khumsupha.');
     footer.appendChild(text);
 
-    document.body.appendChild(hr);
     document.body.appendChild(footer);
 }
 
