@@ -1,7 +1,27 @@
 /*Global Variables*/
 
 :root {
-    /*Color*/
+    /*Color Light Mode (Experimental)
+
+    Sand Tan: #e1b382
+    Sand Tan Shadow: #c89666
+    Night Blue: #2d545e
+    Night Blue Shadow: #12343b
+    
+    --main-color-background: #2d545e;
+    --main-color-navbar: #f0f0f0;
+    --main-color-hover: #e1b382;
+    --main-color-highlight: #f48517;
+    --main-color-header: #f48517;
+    --main-color-text: #292929;
+    --main-color-border: #e1b382;
+    --main-color-a: #292929;
+    --main-color-box: #ffffff;
+    --main-color-shadow: #000000;
+    --main-color-scheme: dark;
+    */
+
+    /*Color Dark Mode*/
     --main-color-background: #303030;
     --main-color-navbar: #292929;
     --main-color-hover: #646464;
@@ -13,6 +33,24 @@
     --main-color-box: #161616;
     --main-color-shadow: #000000;
     --main-color-scheme: dark;
+    
+
+    /*Font*/
+    --main-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --main-font-largest: 5vw;
+    --main-font-large: 3.5vw;
+    --main-font-medium: 2vw;
+    --main-font-small: 1.5vw;
+    --main-font-smaller: 1vw;
+    --main-font-smallest: 0.5vw;
+
+    /*Box*/
+    --main-border: 0.1vw solid var(--main-color-border);
+    --main-box-radius: calc(10px + 0.1vw);
+    --main-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    /*Line*/
+    --main-line: 0.3vw solid var(--main-color-border);
 
     /*Animation*/
     --main-animation-transition: 0.4s ease-in-out;
@@ -59,110 +97,21 @@
 
 /*Desktop Mode (Global Properties)*/
 
-body {
-    background-color: var(--main-color-background);
-    margin: 0%;
-    overflow: auto;
-    color-scheme: var(--main-color-scheme);
-}
-
-hr {
-    border: 0.1vw solid var(--main-color-border);
+html {
+    width: 100%;
+    height: 100%;
     margin: 0%;
     padding: 0%;
-    animation: var(--main-animation-strecht);
 }
 
-h1 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 5vw;
-    font-weight: bold;
-    transition: var(--main-animation-transition);
-}
-
-h2 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 3.5vw;
-    transition: var(--main-animation-transition);
-}
-
-h3 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 2vw;
-    transition: var(--main-animation-transition);
-}
-
-h4 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 1.5vw;
-    transition: var(--main-animation-transition);
-}
-
-h5 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 1vw;
-    transition: var(--main-animation-transition);
-}
-
-h6 {
-    color: var(--main-color-header);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    font-size: 0.5vw;
-    transition: var(--main-animation-transition);
-}
-
-p {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.5vw;
-    color: var(--main-color-text);
-    text-align: left;
-}
-
-ul {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.5vw;
-    color: var(--main-color-text);
-    text-align: left;
-    transition: var(--main-animation-transition);
-}
-
-a {
-    color: var(--main-color-a);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.5vw;
-    background-color: transparent;
-    text-decoration: none;
-    transition: var(--main-animation-transition);
-}
-
-a:hover {
-    color: var(--main-color-highlight);
-    transition: var(--main-animation-transition);
-}
-
-a:link {
-    color: var(--main-color-a);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: transparent;
-    text-decoration: none;
-    transition: var(--main-animation-transition);
-}
-
-img {
+body {
+    background: var(--main-color-background);
     width: 100%;
-    height: auto;
-    transition: var(--main-animation-transition);
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    overflow: auto;
+    color-scheme: var(--main-color-scheme);
 }
 
 nav {
@@ -177,9 +126,112 @@ header {
 article {
     margin: 5%;
     padding: 5% 5% 5% 5%;
+    background: var(--main-color-box);
     animation: var(--main-animation-slide);
-    border-radius: 1vw;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: var(--main-box-radius);
+    box-shadow: var(--main-box-shadow);
+}
+
+hr {
+    border: var(--main-line);
+    margin: 0%;
+    padding: 0%;
+    animation: var(--main-animation-strecht);
+}
+
+h1 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-largest);
+    transition: var(--main-animation-transition);
+}
+
+h2 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-large);
+    transition: var(--main-animation-transition);
+}
+
+h3 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-medium);
+    transition: var(--main-animation-transition);
+}
+
+h4 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-small);
+    transition: var(--main-animation-transition);
+}
+
+h5 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-smaller);
+    transition: var(--main-animation-transition);
+}
+
+h6 {
+    color: var(--main-color-header);
+    font-family: var(--main-font-family);
+    text-align: center;
+    font-size: var(--main-font-smallest);
+    transition: var(--main-animation-transition);
+}
+
+p {
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-small);
+    color: var(--main-color-text);
+    text-align: left;
+}
+
+ul {
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-small);
+    color: var(--main-color-text);
+    text-align: left;
+    transition: var(--main-animation-transition);
+}
+
+ul li {
+    margin: 0.5%;
+}
+
+a {
+    color: var(--main-color-a);
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-small);
+    background-color: transparent;
+    text-decoration: none;
+    transition: var(--main-animation-transition);
+}
+
+a:hover {
+    color: var(--main-color-highlight);
+    transition: var(--main-animation-transition);
+}
+
+a:link {
+    color: var(--main-color-a);
+    font-family: var(--main-font-family);
+    background-color: transparent;
+    text-decoration: none;
+    transition: var(--main-animation-transition);
+}
+
+img {
+    width: 100%;
+    height: auto;
+    transition: var(--main-animation-transition);
 }
 
 /*Footer Class*/
@@ -189,13 +241,40 @@ article {
     border: none;
     margin: 0%;
     padding: 2%;
+    position: absolute;
     height: max-content;
-    background-color: #292929;
+    width: 100%;
+    background-color: var(--main-color-navbar);
     color: var(--main-color-text);
     text-align: center;
-    font-size: 1.5vw;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: var(--main-font-small);
+    font-family: var(--main-font-family);
     transition: var(--main-animation-transition);
+}
+
+/*Container Class*/
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*Background Class*/
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/asset/pictures/BG/20230826210657.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: local, scroll;
+    background-position: center;
+    z-index: -1;
 }
 
 /*Navigation Bar Class*/
@@ -205,37 +284,40 @@ article {
     margin: 0%;
     padding: 0%;
     overflow: hidden;
-    background-color: var(--main-color-navbar);
+    background: var(--main-color-navbar);
     border: none;
-    box-shadow: 0px 0px 2vw var(--main-color-shadow);
+    box-shadow: var(--main-box-shadow);
 }
 
 .navbar ul li {
+    margin: 0%;
+    padding: 0%;
     display: inline-block;
 }
 
 .navbar ul li a {
     display: block;
     color: var(--main-color-a);
-    padding: 2.5vh 2.5vw;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 2.5vh;
+    padding: 2vh 2vw;
+    font-family: var(--main-font-family);
+    font-size: max(1.5vh, 1.5vw);
     text-align: center;
     text-decoration: none;
     transition: var(--main-animation-transition);
 }
 
 .navbar ul li a.active {
-    background-color: var(--main-color-highlight);
+    background: var(--main-color-highlight);
 }
 
 .navbar ul li a:hover:not(.active) {
-    background-color: var(--main-color-hover);
+    background: var(--main-color-hover);
 }
 
 /*Contact Class*/
 
 .contact {
+    background: var(--main-color-box);
     margin: 5%;
 }
 
@@ -246,10 +328,10 @@ article {
 }
 
 .contact ul li {
-    margin: 0.5vw 0.5vw;
-    border: 0.5vw solid var(--main-color-border);
-    border-radius: 1vw;
-    box-shadow: 0px 0px 2vw var(--main-color-shadow);
+    margin: 0.5vw 0.25vw 0.5vw 0.25vw;
+    border: 0.2vw solid var(--main-color-border);
+    border-radius: var(--main-box-radius);
+    box-shadow: var(--main-box-shadow);
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -278,20 +360,21 @@ article {
     margin: -100%;
     text-align: center;
     display: inline-block;
-    font-size: 1.5vw;
+    font-size: var(--main-font-small);
     font-weight: bold;
     color: var(--main-color-text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--main-font-family);
 }
 
 /*Code Block Class*/
 
 .code {
     overflow: auto;
+    background: var(--main-color-box);
     border-radius: 1vw;
     padding: 2%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1.5vw;
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-small);
     color: var(--main-color-text);
 }
 
@@ -299,16 +382,20 @@ article {
 
 .markdown {
     overflow: auto;
-    border-radius: 1.5vw;
+    background: var(--main-color-box);
+    border-radius: var(--main-box-radius);
     padding: 2%;
 }
+
+/*Markdown About Page Block Class*/
 
 .markdown.contact {
     display: block;
     margin: 0 auto;
+    margin-top: var(--main-font-small);
     max-width: 50%;
-    border-radius: 0.4vw;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: var(--main-box-radius);
+    box-shadow: var(--main-box-shadow);
 }
 
 .markdown.contact img{
@@ -324,43 +411,52 @@ article {
 
 @media only screen and (max-width: 600px) {
     h1 {
-        font-size: 10vw;
+        font-size: calc(2.5*var(--main-font-largest));
     }
 
     h2 {
-        font-size: 8vw;
+        font-size: calc(2.5*var(--main-font-large));
     }
 
     h3 {
-        font-size: 6vw;
+        font-size: calc(2.5*var(--main-font-medium));
     }
 
     h4 {
-        font-size: 5vw;
+        font-size: calc(2.5*var(--main-font-small));
     }
 
     h5 {
-        font-size: 4vw;
+        font-size: calc(2.5*var(--main-font-smaller));
     }
 
     h6 {
-        font-size: 3vw;
+        font-size: calc(2.5*var(--main-font-smallest));
     }
 
     p {
-        font-size: 3.5vw;
+        font-size: calc(2.5*var(--main-font-small));
     }
 
     ul {
-        font-size: 3.5vw;
+        font-size: calc(2.5*var(--main-font-small));
+    }
+
+    ul li {
+        margin: 2%;
     }
 
     a {
-        font-size: 3.5vw;
+        font-size: calc(2.5*var(--main-font-small));
     }
 
     .navbar ul li {
         display: block;
+    }
+
+    .navbar ul li a {
+        padding: 2vh 2vw;
+        font-size: max(3vh, 3vw);
     }
 
     .contact ul li a p {
@@ -368,20 +464,85 @@ article {
     }
 
     .footer {
-        font-size: 4vw;
+        font-size: calc(2*var(--main-font-small));
     }
 
     .code {
-        font-size: 4vw;
+        font-size: calc(2*var(--main-font-small));
     }
 
     .markdown {
-        border-radius: 0.4vw;
+        border-radius: calc(2*var(--main-box-radius));
     }
 
     .markdown.contact {
         max-width: 100%;
-        box-shadow: none;
+    }
+
+}
+
+/*Tablet Mode*/
+
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    h1 {
+        font-size: calc(1.5*var(--main-font-largest));
+    }
+
+    h2 {
+        font-size: calc(1.5*var(--main-font-large));
+    }
+
+    h3 {
+        font-size: calc(1.5*var(--main-font-medium));
+    }
+
+    h4 {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    h5 {
+        font-size: calc(1.5*var(--main-font-smaller));
+    }
+
+    h6 {
+        font-size: calc(1.5*var(--main-font-smallest));
+    }
+
+    p {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    ul {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    ul li {
+        margin: 1%;
+    }
+
+    a {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    .navbar ul li a {
+        padding: 2vh 2vw;
+        font-size: max(2vh, 2vw);
+    }
+
+    .footer {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    .code {
+        font-size: calc(1.5*var(--main-font-small));
+    }
+
+    .markdown {
+        border-radius: calc(1.5*var(--main-box-radius));
+    }
+
+    .markdown.contact {
+        max-width: 75%;
     }
 
 }

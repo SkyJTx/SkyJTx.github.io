@@ -1,5 +1,14 @@
 let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
 
+function createBG(){
+    const container = document.createElement('div');
+    const bg = document.createElement('div');
+    container.classList.add('container');
+    bg.classList.add('background');
+    container.appendChild(bg);
+    document.body.appendChild(container);
+}
+
 function createNavbar(nav_dict = nav) {
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
