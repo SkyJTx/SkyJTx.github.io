@@ -86,12 +86,14 @@
 }
 
 @keyframes strechtLine {
-    from {
+    0% {
         width: 0%;
+        margin: 0% 50%;
     }
 
-    to {
+    100% {
         width: 100%;
+        margin: 0%;
     }
 }
 
@@ -214,6 +216,16 @@ img {
     transition: var(--main-animation-transition);
 }
 
+pre {
+    margin: 0;
+    padding: 0;
+}
+
+code {
+    margin: 0;
+    padding: 0;
+}
+
 /*Builtin Element*/
 
 nav {
@@ -315,9 +327,13 @@ article {
 
 /*Content Class*/
 
-.content {
-    margin: 0%;
-    padding: 0%;
+.article {
+    margin: 5%;
+    padding: 5% 5% 5% 5%;
+    background: var(--main-color-box);
+    animation: var(--main-animation-slide);
+    border-radius: var(--main-box-radius);
+    box-shadow: var(--main-box-shadow);
 }
 
 /*Contact Class*/
@@ -377,10 +393,10 @@ article {
 
 .code {
     overflow: auto;
+    display: block;
+    white-space: pre;
     background: var(--main-color-box);
-    border-radius: 1vw;
-    padding: 2%;
-    font-family: var(--main-font-family);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: var(--main-font-small);
     color: var(--main-color-text);
 }

@@ -1,9 +1,9 @@
 let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
-let theme = localStorage.getItem('theme');
+let darkTheme = localStorage.getItem('darkTheme');
 
-if (theme == null) {
-    theme = 1;
-    localStorage.setItem('theme', 1);
+if (darkTheme == null) {
+    darkTheme = 'true';
+    localStorage.setItem('darkTheme', );
 }
 
 function createBG(){
@@ -11,17 +11,24 @@ function createBG(){
     const bg = document.createElement('div');
     container.classList.add('container');
     bg.classList.add('background');
+    container.addEventListener('scroll', () => {
+        bg.style.top = -container.scrollTop + 'px';
+    })
     container.appendChild(bg);
     document.body.appendChild(container);
 }
 
 function toggleThemeMode() {
     const root = document.documentElement;
-    if (theme == 1) {
+    const themeToggleIcon = document.querySelector('.theme-toggle-button');
+    darkTheme = localStorage.getItem('darkTheme');
+    darkTheme = !darkTheme;
+    localStorage.setItem('darkTheme', darkTheme);
+    if (darkTheme == 'true') {
         root.style.setProperty('--main-color-background', '#303030');
         root.style.setProperty('--main-color-navbar', '#292929');
         root.style.setProperty('--main-color-hover', '#646464');
-        root.style.setProperty('--main-color-highlight', '#f48517');
+        root.style.setProperty('--main-color-highlight', '#f4857');
         root.style.setProperty('--main-color-header', '#ffb900');
         root.style.setProperty('--main-color-text', '#ffd7aa');
         root.style.setProperty('--main-color-border', '#ffd7aa');
@@ -29,11 +36,8 @@ function toggleThemeMode() {
         root.style.setProperty('--main-color-box', '#161616');
         root.style.setProperty('--main-color-shadow', '#000000');
         root.style.setProperty('--main-color-scheme', 'dark');
-        theme = 0;
-        localStorage.setItem('theme', 0);
-        const themeToggleIcon = document.querySelector('.theme-toggle-button');
         themeToggleIcon.textContent = '🌙';
-    } else if (theme == 0) {
+    } else if (darkTheme == 'false') {
         root.style.setProperty('--main-color-background', '#2d545e');
         root.style.setProperty('--main-color-navbar', '#f0f0f0');
         root.style.setProperty('--main-color-hover', '#e1b382');
@@ -45,9 +49,6 @@ function toggleThemeMode() {
         root.style.setProperty('--main-color-box', '#ffffff');
         root.style.setProperty('--main-color-shadow', '#000000');
         root.style.setProperty('--main-color-scheme', 'light');
-        theme = 1;
-        localStorage.setItem('theme', 1);
-        const themeToggleIcon = document.querySelector('.theme-toggle-button');
         themeToggleIcon.textContent = '☀️';
     }
 }
@@ -59,10 +60,10 @@ function createThemeToggle() {
     themeToggleIcon.classList.add('theme-toggle-button');
     themeToggleIcon.textContent = '🌙';
     themeToggle.appendChild(themeToggleIcon);
-    document.body.appendChild(themeToggle);
     themeToggle.addEventListener('click', () => {
         toggleThemeMode();
     });
+    document.body.appendChild(themeToggle);
 }
 
 function createNavbar(nav_dict = nav) {
