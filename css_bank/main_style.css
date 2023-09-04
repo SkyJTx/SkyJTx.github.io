@@ -18,6 +18,7 @@
     --main-color-a: #292929;
     --main-color-box: #ffffff;
     --main-color-shadow: #000000;
+    --main-color-navbar-text: #000000;
     --main-color-scheme: light;
     */
 
@@ -32,6 +33,7 @@
     --main-color-a: #ffffff;
     --main-color-box: #363636;
     --main-color-shadow: #000000;
+    --main-color-navbar-text: #ffffff;
     --main-color-scheme: dark;
     
 
@@ -115,9 +117,10 @@ body {
 }
 
 hr {
-    border: var(--main-line);
     margin: 0%;
     padding: 0%;
+    border: var(--main-line);
+    border-radius: 2vw;
     animation: var(--main-animation-strecht);
 }
 
@@ -319,7 +322,7 @@ article {
 
 .navbar ul li a {
     display: block;
-    color: var(--main-color-a);
+    color: var(--main-color-navbar-text);
     padding: 2vh 2vw;
     font-family: var(--main-font-family);
     font-size: max(1.5vh, 1.5vw);

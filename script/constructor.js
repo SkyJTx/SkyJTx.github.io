@@ -25,6 +25,7 @@ function setDarkTheme() {
     root.style.setProperty('--main-color-a', '#ffffff');
     root.style.setProperty('--main-color-box', '#363636');
     root.style.setProperty('--main-color-shadow', '#000000');
+    root.style.setProperty('--main-color-navbar-text', '#ffffff');
     root.style.setProperty('--main-color-scheme', 'dark');
     themeToggleIcon.textContent = '🌙';
 }
@@ -42,6 +43,7 @@ function setLightTheme() {
     root.style.setProperty('--main-color-a', '#292929');
     root.style.setProperty('--main-color-box', '#ffffff');
     root.style.setProperty('--main-color-shadow', '#000000');
+    root.style.setProperty('--main-color-navbar-text', '#000000');
     root.style.setProperty('--main-color-scheme', 'light');
     themeToggleIcon.textContent = '☀️';
 }
