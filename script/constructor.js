@@ -115,7 +115,7 @@ function createFooter() {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
-    const text = document.createTextNode('Version 0.4.1 - Updated 2023-09-04');
+    const text = document.createTextNode('Version 0.4.2 - Updated 2023-09-04');
     footer.appendChild(text);
 
     document.body.appendChild(footer);
