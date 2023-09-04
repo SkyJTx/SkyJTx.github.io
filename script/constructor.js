@@ -1,3 +1,5 @@
+/*Define Variables*/
+
 let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
 let darkTheme = localStorage.getItem('darkTheme');
 
@@ -7,6 +9,8 @@ if (darkTheme === null) {
 } else {
     darkTheme = darkTheme === 'true';
 }
+
+/*Define Functions*/
 
 function setDarkTheme() {
     const root = document.documentElement;
