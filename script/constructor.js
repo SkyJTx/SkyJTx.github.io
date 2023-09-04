@@ -48,7 +48,6 @@ function setLightTheme() {
     themeToggleIcon.textContent = '☀️';
 }
 
-
 function toggleThemeMode() {
     if (darkTheme) {
         setDarkTheme();

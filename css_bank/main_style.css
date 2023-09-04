@@ -413,7 +413,7 @@ article {
     background: var(--main-color-box);
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: var(--main-font-small);
-    color: var(--main-color-text);
+    color: var(--main-color-navbar-text);
 }
 
 /*Markdown Block Class*/
