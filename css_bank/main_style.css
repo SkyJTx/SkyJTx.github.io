@@ -10,15 +10,15 @@
     
     --main-color-background: #2d545e;
     --main-color-navbar: #f0f0f0;
-    --main-color-hover: #e1b382;
+    --main-color-hover: #bbbbbb;
     --main-color-highlight: #f48517;
-    --main-color-header: #f48517;
-    --main-color-text: #292929;
+    --main-color-header: #ffb900;
+    --main-color-text: #f46655;
     --main-color-border: #e1b382;
     --main-color-a: #292929;
     --main-color-box: #ffffff;
     --main-color-shadow: #000000;
-    --main-color-scheme: dark;
+    --main-color-scheme: light;
     */
 
     /*Color Dark Mode*/
@@ -233,7 +233,8 @@ nav {
 }
 
 header {
-    margin: 0%;
+    margin-top: 13vh;
+    padding: 0%;
     animation: var(--main-animation-fadein);
 }
 
@@ -275,7 +276,7 @@ article {
 /*Background Class*/
 
 .background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -286,9 +287,18 @@ article {
     background-attachment: local, scroll;
     background-position: center;
     z-index: -1;
+    filter: blur(20px);
 }
 
 /*Navigation Bar Class*/
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
 
 .navbar ul {
     list-style-type: none;
@@ -433,8 +443,8 @@ article {
 /*Dark/Light Theme Button*/
 
 .theme-toggle {
-    position: absolute;
-    top: 10px;
+    position: fixed;
+    bottom: 10px;
     right: 10px;
     transition: var(--main-animation-transition);
 }
@@ -501,6 +511,14 @@ article {
         font-size: calc(2.5*var(--main-font-small));
     }
 
+    header {
+        margin-top: 0;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
     .navbar ul li {
         display: block;
     }
@@ -528,6 +546,10 @@ article {
 
     .markdown.contact {
         max-width: 100%;
+    }
+
+    .theme-toggle-button {
+        font-size: calc(2*var(--main-font-small));
     }
 
 }

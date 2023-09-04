@@ -1,9 +1,70 @@
 let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
 let darkTheme = localStorage.getItem('darkTheme');
 
-if (darkTheme == null) {
-    darkTheme = 'true';
-    localStorage.setItem('darkTheme', );
+if (darkTheme === null) {
+    darkTheme = true;
+    localStorage.setItem('darkTheme', darkTheme.toString());
+} else {
+    darkTheme = darkTheme === 'true';
+}
+
+function setDarkTheme() {
+    const root = document.documentElement;
+    const themeToggleIcon = document.querySelector('.theme-toggle-button');
+    root.style.setProperty('--main-color-background', '#303030');
+    root.style.setProperty('--main-color-navbar', '#424242');
+    root.style.setProperty('--main-color-hover', '#646464');
+    root.style.setProperty('--main-color-highlight', '#f48517');
+    root.style.setProperty('--main-color-header', '#ffb900');
+    root.style.setProperty('--main-color-text', '#ffd7aa');
+    root.style.setProperty('--main-color-border', '#ffd7aa');
+    root.style.setProperty('--main-color-a', '#ffffff');
+    root.style.setProperty('--main-color-box', '#363636');
+    root.style.setProperty('--main-color-shadow', '#000000');
+    root.style.setProperty('--main-color-scheme', 'dark');
+    themeToggleIcon.textContent = '🌙';
+}
+
+function setLightTheme() {
+    const root = document.documentElement;
+    const themeToggleIcon = document.querySelector('.theme-toggle-button');
+    root.style.setProperty('--main-color-background', '#2d545e');
+    root.style.setProperty('--main-color-navbar', '#f0f0f0');
+    root.style.setProperty('--main-color-hover', '#bbbbbb');
+    root.style.setProperty('--main-color-highlight', '#f48517');
+    root.style.setProperty('--main-color-header', '#ffb900');
+    root.style.setProperty('--main-color-text', '#f46655');
+    root.style.setProperty('--main-color-border', '#e1b382');
+    root.style.setProperty('--main-color-a', '#292929');
+    root.style.setProperty('--main-color-box', '#ffffff');
+    root.style.setProperty('--main-color-shadow', '#000000');
+    root.style.setProperty('--main-color-scheme', 'light');
+    themeToggleIcon.textContent = '☀️';
+}
+
+
+function toggleThemeMode() {
+    if (darkTheme) {
+        setDarkTheme();
+    } else {
+        setLightTheme();
+    }
+    darkTheme = !darkTheme;
+    console.log(darkTheme.toString());
+    localStorage.setItem('darkTheme', darkTheme.toString());
+}
+
+function createThemeToggle() {
+    const themeToggle = document.createElement('div');
+    const themeToggleIcon = document.createElement('button');
+    themeToggle.classList.add('theme-toggle');
+    themeToggleIcon.classList.add('theme-toggle-button');
+    themeToggleIcon.textContent = '🌙';
+    themeToggleIcon.addEventListener('click', () => {
+        toggleThemeMode();
+    });
+    themeToggle.appendChild(themeToggleIcon);
+    document.body.appendChild(themeToggle);
 }
 
 function createBG(){
@@ -11,62 +72,12 @@ function createBG(){
     const bg = document.createElement('div');
     container.classList.add('container');
     bg.classList.add('background');
-    container.addEventListener('scroll', () => {
-        bg.style.top = -container.scrollTop + 'px';
-    })
     container.appendChild(bg);
     document.body.appendChild(container);
 }
 
-function toggleThemeMode() {
-    const root = document.documentElement;
-    const themeToggleIcon = document.querySelector('.theme-toggle-button');
-    darkTheme = localStorage.getItem('darkTheme');
-    darkTheme = !darkTheme;
-    localStorage.setItem('darkTheme', darkTheme);
-    if (darkTheme == 'true') {
-        root.style.setProperty('--main-color-background', '#303030');
-        root.style.setProperty('--main-color-navbar', '#292929');
-        root.style.setProperty('--main-color-hover', '#646464');
-        root.style.setProperty('--main-color-highlight', '#f4857');
-        root.style.setProperty('--main-color-header', '#ffb900');
-        root.style.setProperty('--main-color-text', '#ffd7aa');
-        root.style.setProperty('--main-color-border', '#ffd7aa');
-        root.style.setProperty('--main-color-a', '#ffffff');
-        root.style.setProperty('--main-color-box', '#161616');
-        root.style.setProperty('--main-color-shadow', '#000000');
-        root.style.setProperty('--main-color-scheme', 'dark');
-        themeToggleIcon.textContent = '🌙';
-    } else if (darkTheme == 'false') {
-        root.style.setProperty('--main-color-background', '#2d545e');
-        root.style.setProperty('--main-color-navbar', '#f0f0f0');
-        root.style.setProperty('--main-color-hover', '#e1b382');
-        root.style.setProperty('--main-color-highlight', '#f48517');
-        root.style.setProperty('--main-color-header', '#f48517');
-        root.style.setProperty('--main-color-text', '#292929');
-        root.style.setProperty('--main-color-border', '#e1b382');
-        root.style.setProperty('--main-color-a', '#292929');
-        root.style.setProperty('--main-color-box', '#ffffff');
-        root.style.setProperty('--main-color-shadow', '#000000');
-        root.style.setProperty('--main-color-scheme', 'light');
-        themeToggleIcon.textContent = '☀️';
-    }
-}
-
-function createThemeToggle() {
-    const themeToggle = document.createElement('div');
-    const themeToggleIcon = document.createElement('div');
-    themeToggle.classList.add('theme-toggle');
-    themeToggleIcon.classList.add('theme-toggle-button');
-    themeToggleIcon.textContent = '🌙';
-    themeToggle.appendChild(themeToggleIcon);
-    themeToggle.addEventListener('click', () => {
-        toggleThemeMode();
-    });
-    document.body.appendChild(themeToggle);
-}
-
 function createNavbar(nav_dict = nav) {
+    createBG();
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     const ul = document.createElement('ul');
@@ -99,10 +110,18 @@ function createFooter() {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
 
-    const text = document.createTextNode('Version 0.4.0 | Mr. Nattakarn Khumsupha.');
+    const text = document.createTextNode('Version 0.4.0 Best Viewed on Non-Webkit Browser (Any Browser Except Browsers on Apple Product)');
     footer.appendChild(text);
 
     document.body.appendChild(footer);
+
+    /*create theme toggle*/
+    createThemeToggle();
+    if (!darkTheme) {
+        setDarkTheme();
+    } else {
+        setLightTheme();
+    }
 }
 
 function createHeader(headerText) {
