@@ -35,7 +35,7 @@ function setLightTheme() {
     const themeToggleIcon = document.querySelector('.theme-toggle-button');
     root.style.setProperty('--main-color-background', '#2d545e');
     root.style.setProperty('--main-color-navbar', '#f0f0f0');
-    root.style.setProperty('--main-color-hover', '#bbbbbb');
+    root.style.setProperty('--main-color-hover', '#dddddd');
     root.style.setProperty('--main-color-highlight', '#f48517');
     root.style.setProperty('--main-color-header', '#ffb900');
     root.style.setProperty('--main-color-text', '#f46655');
