@@ -376,28 +376,29 @@ article {
     transform: scale(1.25);
 }
 
-.contact ul li a {
-    padding: 5vw;
-    width: 5vw;
-    max-height: 5vw;
-    justify-content: center;
-    align-items: center;
-}
-
 .contact ul li a img {
     border: 0;
     width: 5vw;
     max-height: 5vw;
 }
 
+.contact ul li a {
+    padding: 5vw;
+    width: 5vw;
+    max-height: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .contact ul li a p {
-    margin: -100%;
     text-align: center;
-    display: inline-block;
     font-size: var(--main-font-small);
     font-weight: bold;
     color: var(--main-color-text);
     font-family: var(--main-font-family);
+    margin: 0;
 }
 
 /*Code Block Class*/
