@@ -142,6 +142,7 @@ function createContact() {
                 const img = document.createElement('img');
                 const p = document.createElement('p');
                 img.src = contact[key]['img'];
+                img.alt = "icon by Icons8"
                 link.href = contact[key]['href'];
                 link.target = '_blank';
                 link.rel = 'noopener noreferrer';
