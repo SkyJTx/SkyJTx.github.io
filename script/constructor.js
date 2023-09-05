@@ -55,7 +55,6 @@ function toggleThemeMode() {
         setLightTheme();
     }
     darkTheme = !darkTheme;
-    console.log(darkTheme.toString());
     localStorage.setItem('darkTheme', darkTheme.toString());
 }
 
@@ -81,6 +80,10 @@ function createBG(){
     document.body.appendChild(container);
 }
 
+/**
+ * 
+ * @param {Dictionary} nav_dict name, href
+ */
 function createNavbar(nav_dict = nav) {
     createBG();
     const nav = document.createElement('nav');
@@ -111,13 +114,67 @@ function setActiveNav(nav_name) {
     });
 }
 
+/**
+ * Create Contact by Reading from JSON
+ * JSON Format:
+ * {
+ *  Name: {
+ *      href: Path
+ *      img: localFilePath
+ * }
+ */
+function createContact() {
+    const article = document.createElement('article');
+    article.classList.add('contact');
+    const ul = document.createElement('ul');
+    fetch('/asset/contact.json')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('HTTP error, status = ' + response.status);
+            }
+            return response.text();
+        })
+        .then((text) => {
+            const contact = JSON.parse(text);
+            for (let key in contact) {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                const img = document.createElement('img');
+                const p = document.createElement('p');
+                img.src = contact[key]['img'];
+                link.href = contact[key]['href'];
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                p.textContent = key;
+                link.appendChild(img);
+                link.appendChild(p);
+                li.appendChild(link);
+                ul.appendChild(li);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    const head = document.createElement('h2');
+    head.textContent = 'Connect with me';
+    article.appendChild(head)
+    article.appendChild(ul);
+    document.body.appendChild(article);
+}
+
 function createFooter() {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
-
-    const text = document.createTextNode('Version 0.4.2 - Updated 2023-09-04');
+    const text = document.createTextNode('Version 0.4.2 - Updated 2023-09-04. icon by ');
+    const a = document.createElement('a');
+    a.href = 'https://icons8.com';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = 'Icons8';
+    const end = document.createTextNode('.');
     footer.appendChild(text);
-
+    footer.appendChild(a);
+    footer.appendChild(end);
     document.body.appendChild(footer);
 
     /*create theme toggle*/
@@ -132,11 +189,9 @@ function createFooter() {
 function createHeader(headerText) {
     const header = document.createElement('header');
     const headerH1 = document.createElement('h1');
-    const hr = document.createElement('hr');
     headerH1.textContent = headerText;
     header.appendChild(headerH1);
     document.body.insertBefore(header, document.querySelector('.content'));
-    document.body.insertBefore(hr, document.querySelector('.content'));
 }
 
 /**

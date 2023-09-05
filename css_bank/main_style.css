@@ -461,7 +461,6 @@ article {
     color: var(--main-color-text);
     font-family: var(--main-font-family);
     font-size: var(--main-font-small);
-    margin: 1%;
     text-align: center;
     text-decoration: none;
     transition: var(--main-animation-transition);
@@ -533,7 +532,7 @@ article {
     }
 
     .contact ul li a p {
-        font-size: 0px;
+        font-size: 0;
     }
 
     .footer {
@@ -553,7 +552,7 @@ article {
     }
 
     .theme-toggle-button {
-        font-size: calc(2*var(--main-font-small));
+        font-size: 18px;
     }
 
 }
