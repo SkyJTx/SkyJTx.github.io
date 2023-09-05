@@ -15,13 +15,9 @@
             setActiveNav("About");
             createHeader("SkyJT's Information");
         </script>
-        <article>
-            <div class="markdown" id="markdown-content"></div>
-            <script>
-                displayMarkdownAsHTML("markdown-content", "/README.md");
-            </script>
-        </article>
+        <article class="markdown" id="markdown-content"></article>
         <script>
+            displayMarkdownAsHTML("markdown-content", "/README.md");
             createFooter();
         </script>
     </body>
