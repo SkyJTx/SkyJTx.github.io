@@ -10,6 +10,7 @@
 <div class="markdown contact">
     <h3>Github's Status</h3>
     <p> <img src="https://komarev.com/ghpvc/?username=skyjtx&label=Profile%20views&color=0e75b6&style=flat" alt="skyjtx" /> </p>
+    <p><img src="https://visitor-badge.laobi.icu/badge?page_id=SkyJTx.SkyJTx.github.io" alt="skyjtx"></p>
     <p><img src="https://github-readme-stats.vercel.app/api/top-langs?username=skyjtx&show_icons=true&theme=dark&locale=en&layout=compact" alt="skyjtx" /></p>
     <p>&nbsp;<img src="https://github-readme-stats.vercel.app/api?username=skyjtx&show_icons=true&theme=dark&bg_color=000000&locale=en" alt="skyjtx" /></p>
     <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=skyjtx" alt="skyjtx" /></a>
