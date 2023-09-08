@@ -364,7 +364,8 @@ article {
 
 .contact ul li {
     margin: 0.5vw 0.25vw 0.5vw 0.25vw;
-    border: 0.2vw solid var(--main-color-border);
+    border: 0.1vw solid var(--main-color-border);
+    background-color: var(--main-color-box);
     border-radius: var(--main-box-radius);
     box-shadow: var(--main-box-shadow);
     display: inline-flex;
@@ -375,7 +376,7 @@ article {
 .contact ul li:hover {
     background-color: var(--main-color-hover);
     transition: var(--main-animation-transition);
-    transform: scale(1.25);
+    transform: scale(1.2);
 }
 
 .contact ul li a img {
@@ -427,16 +428,24 @@ article {
 /*Markdown About Page Block Class*/
 
 .markdown.contact {
-    display: block;
+    display: flex;
     margin: 0 auto;
     margin-top: var(--main-font-small);
-    max-width: 50%;
+    max-height: min-content;
     border-radius: var(--main-box-radius);
     box-shadow: var(--main-box-shadow);
 }
 
+.markdown.contact.view {
+    border: none;
+    box-shadow: none;
+    justify-content: center;
+    align-items: center;
+}
+
 .markdown.contact img{
-    width: 100%;
+    width: auto;
+    height: auto;
     display: block;
     margin: 0 auto;
     padding: 0.5vw 0.5vw;
@@ -454,13 +463,15 @@ article {
 }
 
 .theme-toggle-button {
+    width: 50px;
+    height: 50px;
     background: var(--main-color-box);
     border: var(--main-border);
     border-radius: var(--main-box-radius);
     box-shadow: var(--main-box-shadow);
     color: var(--main-color-text);
     font-family: var(--main-font-family);
-    font-size: var(--main-font-small);
+    font-size: 25px;
     text-align: center;
     text-decoration: none;
     transition: var(--main-animation-transition);
@@ -549,10 +560,6 @@ article {
 
     .markdown.contact {
         max-width: 100%;
-    }
-
-    .theme-toggle-button {
-        font-size: 18px;
     }
 
 }
