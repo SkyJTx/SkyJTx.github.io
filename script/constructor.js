@@ -15,7 +15,7 @@ if (darkTheme === null) {
 function setDarkTheme() {
     const root = document.documentElement;
     const themeToggleIcon = document.querySelector('.theme-toggle-button');
-    root.style.setProperty('--main-color-background', '#303030');
+    root.style.setProperty('--main-color-background', '#0e1117');
     root.style.setProperty('--main-color-navbar', '#424242');
     root.style.setProperty('--main-color-hover', '#646464');
     root.style.setProperty('--main-color-highlight', '#f48517');
@@ -33,7 +33,7 @@ function setDarkTheme() {
 function setLightTheme() {
     const root = document.documentElement;
     const themeToggleIcon = document.querySelector('.theme-toggle-button');
-    root.style.setProperty('--main-color-background', '#2d545e');
+    root.style.setProperty('--main-color-background', '#0e1117');
     root.style.setProperty('--main-color-navbar', '#f0f0f0');
     root.style.setProperty('--main-color-hover', '#dddddd');
     root.style.setProperty('--main-color-highlight', '#f48517');
@@ -205,3 +205,17 @@ function setContentClass(element) {
         content.classList.add(`content-${element}`);
     });
 }
+
+function setFlavicon() {
+    const head = document.querySelector('head');
+
+    const link_icon = document.createElement('link');
+    link_icon.rel = 'icon';
+    link_icon.href = '/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
+    link_icon.type = 'image/jpg';
+    link_icon.sizes = '16x16';
+    head.appendChild(link_icon);
+}
+
+setFlavicon();
+createNavbar();
