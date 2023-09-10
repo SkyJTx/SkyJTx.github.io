@@ -76,6 +76,8 @@ function createBG(){
     const bg = document.createElement('div');
     container.classList.add('container');
     bg.classList.add('background');
+    const random = Math.floor(Math.random()*6);
+    bg.style.backgroundImage = `url("/asset/pictures/BG/${random}.png")`;
     container.appendChild(bg);
     document.body.appendChild(container);
 }
@@ -85,7 +87,6 @@ function createBG(){
  * @param {Dictionary} nav_dict name, href
  */
 function createNavbar(nav_dict = nav) {
-    createBG();
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     const ul = document.createElement('ul');
@@ -104,6 +105,10 @@ function createNavbar(nav_dict = nav) {
     document.body.insertBefore(nav, document.querySelector('.content'));
 }
 
+/**
+ * Set Active Navbar Link
+ * @param {string} nav_name Current Active Top-Level Website's Name
+ */
 function setActiveNav(nav_name) {
     const nav = document.querySelector('nav');
     const nav_links = nav.querySelectorAll('a');
@@ -217,5 +222,8 @@ function setFlavicon() {
     head.appendChild(link_icon);
 }
 
+/*Run Function on Start*/
+
+createBG();
 setFlavicon();
 createNavbar();
