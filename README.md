@@ -18,8 +18,6 @@
         <img src="https://github-readme-stats.vercel.app/api?username=skyjtx&show_icons=true&theme=dark&bg_color=000000&locale=en" alt="skyjtx" />
     </p>
     <p>
-    </p>
-    <p>
         <a href="https://git.io/streak-stats">
             <img src="https://github-readme-streak-stats.herokuapp.com?user=SkyJTx&theme=dark&background=45%2C4D0000%2C000A5A" alt="skyjtx" />
         </a>
@@ -27,11 +25,6 @@
     <p>
         <a href="https://github.com/ryo-ma/github-profile-trophy">
             <img src="https://github-profile-trophy.vercel.app/?username=skyjtx&theme=onedark" alt="skyjtx" />
-        </a>
-    </p>
-    <p>
-        <a target="_blank" rel="noopener noreferrer" href="/asset/pictures/README/profile_1.svg">
-            <img src="/asset/pictures/README/profile_1.svg" style="max-width: 100%;">
         </a>
     </p>
 </div>

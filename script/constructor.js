@@ -105,6 +105,14 @@ function createNavbar(nav_dict = nav) {
     document.body.insertBefore(nav, document.querySelector('.content'));
 }
 
+function createLogo() {
+    const logo = document.createElement('img');
+    logo.classList.add('logo');
+    logo.src = '/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
+    logo.alt = 'Logo';
+    document.body.insertBefore(logo, document.querySelector('.content'));
+}
+
 /**
  * Set Active Navbar Link
  * @param {string} nav_name Current Active Top-Level Website's Name
@@ -171,7 +179,7 @@ function createContact() {
 function createFooter() {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
-    const text = document.createTextNode('Version 0.4.2 - Updated 2023-09-04. icon by ');
+    const text = document.createTextNode('Version 0.4.3 - Updated 2023-09-25. icon by ');
     const a = document.createElement('a');
     a.href = 'https://icons8.com';
     a.target = '_blank';
