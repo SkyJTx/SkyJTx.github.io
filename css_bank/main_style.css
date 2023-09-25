@@ -309,7 +309,7 @@ article {
     border-radius: 100%;
     box-shadow: var(--main-box-shadow);
     margin: 0% 50%;
-    width: min(25vw, 25vh);
+    width: 25vh;
 }
 
 /*Navigation Bar Class*/
