@@ -98,6 +98,22 @@
     }
 }
 
+@keyframes scaleIcon {
+    0% {
+        opacity: 0;
+        transform: scale(10);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 /*Desktop Mode (Global Properties)*/
 
 html {
@@ -302,7 +318,6 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: none;
 }
 
 .logo {
@@ -310,6 +325,7 @@ article {
     box-shadow: var(--main-box-shadow);
     margin: 0% 50%;
     width: 25vh;
+    animation: scaleIcon 1.2s;
 }
 
 /*Navigation Bar Class*/
