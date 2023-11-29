@@ -230,8 +230,26 @@ function setFlavicon() {
     head.appendChild(link_icon);
 }
 
+async function getMusescore() {
+    response = await fetch("https://musescore.com/user/28571731/sheetmusic");
+    if (response.status != 200) {
+        console.log("Error: " + response.status);
+        return;
+    }
+    html = await response.text();
+    dom = new DOMParser();
+    doc = dom.parseFromString(html, "text/html");
+    jsstore = doc.body.getElementsByClassName("js-store");
+    data = JSON.parse(jsstore[0].getAttribute("data-content"));
+    for (let i = 0; i < data.store.page.data.scores.length; i++) {
+        score = data.store.page.data.scores[i];
+        console.log(`${i+1}. ${score.title} - https://musescore.com/user/28571731/scores/${score.id}`);
+    }
+}
+
 /*Run Function on Start*/
 
 createBG();
 setFlavicon();
 createNavbar();
+getMusescore();
