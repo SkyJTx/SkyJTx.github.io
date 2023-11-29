@@ -239,8 +239,11 @@ async function getMusescore() {
     html = await response.text();
     dom = new DOMParser();
     doc = dom.parseFromString(html, "text/html");
-    jsstore = doc.body.getElementsByClassName("js-store");
-    data = JSON.parse(jsstore[0].getAttribute("data-content"));
+    jsstore = doc.body.getElementsByClassName("js-7c021ca2284e24882c7f50d9cb14874cf17795017ccafe594ae8b4fc40ab4b7f");
+    data = JSON.parse(jsstore[0].getAttribute("data-5a84cc0ce299d237a676bb77be490f74511ba40c6b112f85175db76a76ab808e"));
+    console.log(doc);
+    console.log(jsstore);
+    console.log(data);
     for (let i = 0; i < data.store.page.data.scores.length; i++) {
         score = data.store.page.data.scores[i];
         console.log(`${i+1}. ${score.title} - https://musescore.com/user/28571731/scores/${score.id}`);
