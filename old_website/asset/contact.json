@@ -1,38 +1,38 @@
 {
     "Email": {
         "href": "mailto: nattakarn.khumsupha.user1@outlook.com",
-        "img": "/asset/icons/contact/icons8-send-email-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-send-email-96.png"
     },
     "Facebook": {
         "href": "https://www.facebook.com/skyjtx",
-        "img": "/asset/icons/contact/icons8-facebook-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-facebook-96.png"
     },
     "Instagram": {
         "href": "https://www.instagram.com/skyjtx/",
-        "img": "/asset/icons/contact/icons8-instagram-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-instagram-96.png"
     },
     "YouTube": {
         "href": "https://www.youtube.com/channel/UCoulLzsv5reAj8Pl_MfilUA",
-        "img": "/asset/icons/contact/icons8-youtube-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-youtube-96.png"
     },
     "LeetCode": {
         "href": "https://leetcode.com/skyjtx/",
-        "img": "/asset/icons/contact/icons8-level-up-your-coding-skills-and-quickly-land-a-job-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-level-up-your-coding-skills-and-quickly-land-a-job-96.png"
     },
     "GitHub": {
         "href": "https://github.com/SkyJTx",
-        "img": "/asset/icons/contact/Github.svg"
+        "img": "/old_website/asset/icons/contact/Github.svg"
     },
     "MuseScore": {
         "href": "https://musescore.com/skyjtx?share=copy_link",
-        "img": "/asset/icons/contact/icons8-musescore-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-musescore-96.png"
     },
     "HoYoLAB": {
         "href": "https://www.hoyolab.com/accountCenter/postList?id=22594033",
-        "img": "/asset/icons/contact/HoYoLAB_icon_new.png"
+        "img": "/old_website/asset/icons/contact/HoYoLAB_icon_new.png"
     },
     "Discord": {
         "href": "https://discords.com/bio/p/SkyJT",
-        "img": "/asset/icons/contact/icons8-discord-96.png"
+        "img": "/old_website/asset/icons/contact/icons8-discord-96.png"
     }
 }

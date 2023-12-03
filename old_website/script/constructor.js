@@ -1,6 +1,6 @@
 /*Define Variables*/
 
-let nav = {Home: "/index.html", Works: "/works_table.html", About: "/about.html"}
+let nav = {Home: "/old_website/index.html", Works: "/old_website/works_table.html", About: "/old_website/about.html"}
 let darkTheme = localStorage.getItem('darkTheme');
 
 if (darkTheme === null) {
@@ -77,7 +77,7 @@ function createBG(){
     container.classList.add('container');
     bg.classList.add('background');
     const random = Math.floor(Math.random()*6);
-    bg.style.backgroundImage = `url("/asset/pictures/BG/${random}.png")`;
+    bg.style.backgroundImage = `url("/old_website/asset/pictures/BG/${random}.png")`;
     container.appendChild(bg);
     document.body.appendChild(container);
 }
@@ -108,7 +108,7 @@ function createNavbar(nav_dict = nav) {
 function createLogo() {
     const logo = document.createElement('img');
     logo.classList.add('logo');
-    logo.src = '/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
+    logo.src = '/old_website/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
     logo.alt = 'Logo';
     document.body.insertBefore(logo, document.querySelector('.content'));
 }
@@ -140,7 +140,7 @@ function createContact() {
     const article = document.createElement('article');
     article.classList.add('contact');
     const ul = document.createElement('ul');
-    fetch('/asset/contact.json')
+    fetch('/old_website/asset/contact.json')
         .then((response) => {
             if (!response.ok) {
                 throw new Error('HTTP error, status = ' + response.status);
@@ -224,7 +224,7 @@ function setFlavicon() {
 
     const link_icon = document.createElement('link');
     link_icon.rel = 'icon';
-    link_icon.href = '/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
+    link_icon.href = '/old_website/asset/pictures/Logo/122151189_724130148449581_319263467210893066_n.jpg';
     link_icon.type = 'image/jpg';
     link_icon.sizes = '16x16';
     head.appendChild(link_icon);
