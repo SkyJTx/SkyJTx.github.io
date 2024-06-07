@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:skyjtx_website/component/custom_scaffold.dart';
 import 'package:skyjtx_website/presentation/homepage/home.dart';
 import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
@@ -14,7 +15,7 @@ void main() async {
   final GetIt getIt = GetIt.instance;
   runApp(
     Provider(
-      create: (_) => getIt.get<GlobalKeyProvider>(),
+      create: (_) => GlobalKeyProvider(),
       child: ChangeNotifierProvider(
         create: (_) => getIt.get<SettingsProvider>(),
         lazy: false,
@@ -32,37 +33,30 @@ class MainApp extends StatefulWidget {
 }
 
 class MainAppState extends State<MainApp> {
-  late final SettingsProvider settingsProvider;
-  late final GlobalKeyProvider globalKeyProvider;
-  late final router.Route routes;
-
-  @override
-  void didChangeDependencies() {
-    settingsProvider = Provider.of<SettingsProvider>(context);
-    globalKeyProvider = Provider.of<GlobalKeyProvider>(context);
-    routes = router.Route(
-      name: 'homepage',
-      wrapper: (context, child) => child,
-      builder: (context) => const HomePage(),
-      children: [],
-    );
-
-    super.didChangeDependencies();
-  }
+  final router.Route routes = router.Route(
+    name: 'homepage',
+    wrapper: (context, child) => child,
+    builder: (context) => const HomePage(),
+    children: [],
+  );
 
   @override
   Widget build(BuildContext context) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final globalKeyProvider = Provider.of<GlobalKeyProvider>(context);
     return FlutterSizer(
-      builder: (context, orientation, screenType) => MaterialApp(
-        title: 'SkyJtx Website',
-        navigatorKey: globalKeyProvider.navigatorKey,
-        scaffoldMessengerKey: globalKeyProvider.scaffoldKey,
-        initialRoute: routes.path,
-        routes: {
-          for (final route in routes.routeList) route.path: route.build,
-        },
-        theme: settingsProvider.theme,
-      ),
+      builder: (context, orientation, screenType) {
+        return MaterialApp(
+          title: 'SkyJT\'x Website',
+          navigatorKey: globalKeyProvider.navigatorKey,
+          scaffoldMessengerKey: globalKeyProvider.scaffoldMsgKey,
+          initialRoute: routes.path,
+          routes: {
+            for (final route in routes.routeList) route.path: route.build,
+          },
+          theme: settingsProvider.theme,
+        );
+      },
     );
   }
 }
