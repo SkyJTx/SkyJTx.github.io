@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:hive/hive.dart';
 import 'package:skyjtx_website/class/mutable_enum.dart';
 
@@ -8,8 +9,8 @@ class Setting<T> implements MutableEnum {
   static final _baseHashValue = boxName.hashCode;
   static const boxName = 'Settings';
   static final values = <Setting>[
-    Setting<Color>(name: 'Primary Color', defaultValue: Colors.blue),
-    Setting<bool>(name: 'Dark Mode', defaultValue: false),
+    Setting<String>(name: 'Primary Color', defaultValue: Colors.purple.toHexString()),
+    Setting<bool>(name: 'Dark Mode', defaultValue: ThemeMode.system == ThemeMode.dark),
     Setting<double>(name: 'Font Size', defaultValue: 16.0)
   ];
 
@@ -48,7 +49,7 @@ class Setting<T> implements MutableEnum {
 }
 
 class SettingsProvider extends ChangeNotifier {
-  Color get primaryColor => Setting.primaryColor.value;
+  Color get primaryColor => Color(int.parse(Setting.primaryColor.value, radix: 16));
   bool get darkMode => Setting.darkMode.value;
   double get fontSize => Setting.fontSize.value;
 
