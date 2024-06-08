@@ -33,22 +33,39 @@ class AnimatedCircleAvatar extends StatefulWidget {
 class AnimatedCircleAvatarState extends State<AnimatedCircleAvatar>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late CurvedAnimation animation;
-  late Tween<double> tween;
+  late Animation<double> scaleAnimation;
+  late Animation<double> fadeInAnimation;
 
   @override
-  void didChangeDependencies() {
+  void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 1000),
     );
-    animation = CurvedAnimation(
+    final curve = CurvedAnimation(
       parent: controller,
       curve: Curves.easeInOutCubicEmphasized,
     );
-    tween = Tween<double>(begin: 5, end: 1);
-    controller.forward();
-    super.didChangeDependencies();
+    final sizeTweens = TweenSequence<double>([
+      TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 2, end: 0.7),
+        weight: 50,
+      ),
+      TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 0.7, end: 1),
+        weight: 50,
+      ),
+    ]);
+    final fadeInTween = Tween<double>(
+      begin: 0,
+      end: 1,
+    );
+    scaleAnimation = sizeTweens.animate(curve);
+    fadeInAnimation = fadeInTween.animate(curve);
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.forward(from: 0);
+    });
   }
 
   @override
@@ -58,28 +75,36 @@ class AnimatedCircleAvatarState extends State<AnimatedCircleAvatar>
   }
 
   @override
-  void didUpdateWidget(covariant AnimatedCircleAvatar oldWidget) {
-    if (oldWidget.child != widget.child) {
-      controller.forward(from: 0);
-    }
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ScaleTransition(
-      scale: tween.animate(animation),
-      child: CircleAvatar(
-        backgroundColor: widget.backgroundColor,
-        backgroundImage: widget.backgroundImage,
-        foregroundImage: widget.foregroundImage,
-        onBackgroundImageError: widget.onBackgroundImageError,
-        onForegroundImageError: widget.onForegroundImageError,
-        foregroundColor: widget.foregroundColor,
-        radius: widget.radius,
-        minRadius: widget.minRadius,
-        maxRadius: widget.maxRadius,
-        child: widget.child,
+      scale: scaleAnimation,
+      child: FadeTransition(
+        opacity: fadeInAnimation,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 10,
+                spreadRadius: 1,
+                offset: Offset(0, 0),
+              ),
+            ],
+          ),
+          child: CircleAvatar(
+            backgroundColor: widget.backgroundColor,
+            backgroundImage: widget.backgroundImage,
+            foregroundImage: widget.foregroundImage,
+            onBackgroundImageError: widget.onBackgroundImageError,
+            onForegroundImageError: widget.onForegroundImageError,
+            foregroundColor: widget.foregroundColor,
+            radius: widget.radius,
+            minRadius: widget.minRadius,
+            maxRadius: widget.maxRadius,
+            child: widget.child,
+          ),
+        ),
       ),
     );
   }

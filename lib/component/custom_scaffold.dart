@@ -2,11 +2,10 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
-import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
 
 class CustomScaffold extends StatefulWidget {
@@ -30,7 +29,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final settingProvider = Provider.of<SettingsProvider>(context);
-    final globalKeyProvider = Provider.of<GlobalKeyProvider>(context);
+
     return DecoratedBox(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -54,6 +53,9 @@ class CustomScaffoldState extends State<CustomScaffold> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          foregroundColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
           leading: IconButton(
             icon: const Icon(
               Icons.menu,
@@ -62,6 +64,10 @@ class CustomScaffoldState extends State<CustomScaffold> {
             onPressed: () {
               scaffoldKey.currentState?.openDrawer();
             },
+          ),
+          title: Text(
+            'SkyJT\'s Website',
+            style: theme.textTheme.titleLarge,
           ),
         ),
         drawer: SizedBox(

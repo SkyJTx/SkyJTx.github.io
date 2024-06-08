@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:skyjtx_website/class/mutable_enum.dart';
 
 class Setting<T> implements MutableEnum {
@@ -73,6 +74,10 @@ class SettingsProvider extends ChangeNotifier {
     final SettingsProvider provider = SettingsProvider();
 
     return provider;
+  }
+
+  static SettingsProvider of(BuildContext context, {bool listen = true}) {
+    return Provider.of<SettingsProvider>(context, listen: listen);
   }
 
   dynamic get(Setting setting) {

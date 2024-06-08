@@ -45,6 +45,11 @@ class HomePageState extends State<HomePage> {
                           radius: 100,
                           backgroundImage: const AssetImage('assets/icons/logo.jpg'),
                           child: InkWell(
+                            focusColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            overlayColor: WidgetStateProperty.all(Colors.transparent),
                             customBorder: const CircleBorder(),
                             onTap: () {
                               animatedCircleAvatarKey.currentState?.controller.forward(from: 0);

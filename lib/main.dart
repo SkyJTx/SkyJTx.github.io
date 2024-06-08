@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:skyjtx_website/component/custom_scaffold.dart';
 import 'package:skyjtx_website/presentation/homepage/home.dart';
 import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
@@ -31,10 +30,9 @@ class MainApp extends StatefulWidget {
   @override
   State<MainApp> createState() => MainAppState();
 }
-
 class MainAppState extends State<MainApp> {
   final router.Route routes = router.Route(
-    name: 'homepage',
+    name: '',
     wrapper: (context, child) => child,
     builder: (context) => const HomePage(),
     children: [],
