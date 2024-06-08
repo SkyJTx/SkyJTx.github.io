@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
+import 'package:skyjtx_website/component/animated_background.dart';
 import 'package:skyjtx_website/provider/settings.dart';
 
 class CustomScaffold extends StatefulWidget {
@@ -30,24 +31,20 @@ class CustomScaffoldState extends State<CustomScaffold> {
     final theme = Theme.of(context);
     final settingProvider = Provider.of<SettingsProvider>(context);
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-          colors: theme.brightness == Brightness.light
-              ? [
-                  Colors.blue[300]!,
-                  Colors.purple[300]!,
-                  Colors.orange[300]!,
-                ]
-              : [
-                  Colors.blue,
-                  Colors.purple,
-                  Colors.pink,
-                ],
-        ),
-      ),
+    return AnimatedBackground(
+      curve: Curves.linear,
+      duration: const Duration(seconds: 10),
+      colors: theme.brightness == Brightness.light
+          ? [
+              Colors.blue[300]!,
+              Colors.purple[300]!,
+              Colors.orange[300]!,
+            ]
+          : [
+              Colors.blue,
+              Colors.purple,
+              Colors.pink,
+            ],
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.transparent,
@@ -67,7 +64,9 @@ class CustomScaffoldState extends State<CustomScaffold> {
           ),
           title: Text(
             'SkyJT\'s Website',
-            style: theme.textTheme.titleLarge,
+            style: theme.textTheme.titleLarge?.copyWith(
+              color: Colors.white,
+            ),
           ),
         ),
         drawer: SizedBox(
