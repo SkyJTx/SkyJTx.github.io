@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:provider/provider.dart';
 
 class GlobalKeyProvider {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -7,6 +8,10 @@ class GlobalKeyProvider {
 
   NavigatorState get navigator => navigatorKey.currentState!;
   ScaffoldMessengerState get scaffoldMsg => scaffoldMsgKey.currentState!;
+
+  static GlobalKeyProvider of(BuildContext context, {bool listen = true}) {
+    return Provider.of<GlobalKeyProvider>(context, listen: listen);
+  }
 
   void showSnackBar(
     BuildContext context, {
