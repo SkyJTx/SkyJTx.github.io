@@ -30,4 +30,14 @@ class Route {
     wrapper ??= (context, child) => child;
     return wrapper!(context, builder(context));
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Route && other.name == name;
+  }
+
+  @override
+  int get hashCode => name.hashCode;
 }
