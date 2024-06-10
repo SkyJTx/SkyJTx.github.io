@@ -17,8 +17,13 @@ void main() async {
       create: (_) => GlobalKeyProvider(),
       child: ChangeNotifierProvider(
         create: (_) => getIt.get<SettingsProvider>(),
-        lazy: false,
-        child: const MainApp(),
+        child: Builder(
+          builder: (context) {
+            return MainApp(
+              key: GlobalKeyProvider.of(context).mainAppStateKey,
+            );
+          },
+        ),
       ),
     ),
   );
@@ -30,18 +35,37 @@ class MainApp extends StatefulWidget {
   @override
   State<MainApp> createState() => MainAppState();
 }
+
 class MainAppState extends State<MainApp> {
-  final router.Route routes = router.Route(
-    name: '',
-    wrapper: (context, child) => child,
-    builder: (context) => const HomePage(),
-    children: [],
-  );
+  final focusNode = FocusNode();
+  final textSelectionController = MaterialTextSelectionControls();
+
+  late router.Route routes;
+
+  Widget selectionWrapper(BuildContext context, Widget child) {
+    return SelectionArea(
+      focusNode: focusNode,
+      selectionControls: textSelectionController,
+      child: child,
+    );
+  }
+
+  @override
+  void initState() {
+    routes = router.Route(
+      key: HomePage.routeKey,
+      name: '',
+      wrapper: selectionWrapper,
+      builder: (context) => const HomePage(),
+      children: [],
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final settingsProvider = Provider.of<SettingsProvider>(context);
-    final globalKeyProvider = Provider.of<GlobalKeyProvider>(context);
+    final settingsProvider = SettingsProvider.of(context);
+    final globalKeyProvider = GlobalKeyProvider.of(context);
     return FlutterSizer(
       builder: (context, orientation, screenType) {
         return MaterialApp(
@@ -53,6 +77,7 @@ class MainAppState extends State<MainApp> {
             for (final route in routes.routeList) route.path: route.build,
           },
           theme: settingsProvider.theme,
+          debugShowCheckedModeBanner: false,
         );
       },
     );
