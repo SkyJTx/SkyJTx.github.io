@@ -1,29 +1,57 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 class Route {
+  String key = '';
   String name;
   Widget Function(BuildContext, Widget)? wrapper;
   Widget Function(BuildContext) builder;
   Route? parent;
   List<Route> children = [];
 
-  String path = '';
-
-  Route({required this.name, this.wrapper, required this.builder, required this.children}) {
-    path = '/$name';
+  Route({
+    required this.key,
+    required this.name,
+    this.wrapper,
+    required this.builder,
+    required this.children,
+  }) {
     for (final child in children) {
-      child.path = '$path/${child.path}';
       child.parent = this;
     }
   }
 
+  String get path {
+    return parent != null ? '${parent!.path}/$name' : name;
+  }
+
   List<Route> get routeList {
-    final List<Route> list = [];
+    final HashSet<Route> routeSet = HashSet();
+    routeSet.add(this);
     for (final child in children) {
-      list.addAll(child.routeList);
+      if (routeSet.contains(child)) {
+        throw Exception('Duplicate key: ${child.key}');
+      }
+      routeSet.addAll(child.routeList);
     }
-    list.add(this);
-    return list;
+
+    return routeSet.toList();
+  }
+
+  Map<String, Route> get routeMap {
+    final Map<String, Route> map = {};
+    for (final route in routeList) {
+      if (map.containsKey(route.key)) {
+        throw Exception('Duplicate key: ${route.key}');
+      }
+      map[route.key] = route;
+    }
+    return map;
+  }
+
+  Route? getRouteFromKey(String key) {
+    return routeMap[key];
   }
 
   Widget build(BuildContext context) {
@@ -35,9 +63,14 @@ class Route {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Route && other.name == name;
+    return other is Route && other.key == key;
   }
 
   @override
-  int get hashCode => name.hashCode;
+  int get hashCode => key.hashCode;
+
+  @override
+  String toString() {
+    return 'Route(key: $key, name: $name, path: $path, children: $children)';
+  }
 }
