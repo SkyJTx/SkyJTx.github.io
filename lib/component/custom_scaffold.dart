@@ -7,6 +7,8 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:skyjtx_website/component/animated_background.dart';
+import 'package:skyjtx_website/presentation/homepage/home.dart';
+import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
 
 class CustomScaffold extends StatefulWidget {
@@ -19,12 +21,8 @@ class CustomScaffold extends StatefulWidget {
 }
 
 class CustomScaffoldState extends State<CustomScaffold> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  ScaffoldState? get key => _scaffoldKey.currentState;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
               Colors.pink,
             ],
       child: Scaffold(
-        key: scaffoldKey,
+        key: _scaffoldKey,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -54,70 +52,84 @@ class CustomScaffoldState extends State<CustomScaffold> {
           foregroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
           leading: IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.menu,
-              color: Colors.white,
+              color: theme.colorScheme.onSurface,
             ),
             onPressed: () {
-              scaffoldKey.currentState?.openDrawer();
+              _scaffoldKey.currentState?.openDrawer();
             },
           ),
           title: Text(
             'SkyJT\'s Website',
             style: theme.textTheme.titleLarge?.copyWith(
-              color: Colors.white,
+              color: theme.colorScheme.onSurface,
             ),
           ),
         ),
-        drawer: SizedBox(
-          width: min(70.w, 600),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              width: min(70.w, 600),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withOpacity(0.5),
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  children: [
-                    Flexible(
-                      child: ListView(
-                        children: const [
-                          ListTile(
-                            title: Text('Home'),
-                          ),
-                          ListTile(
-                            title: Text('About'),
-                          ),
-                          ListTile(
-                            title: Text('Contact'),
-                          ),
-                        ],
+        drawer: Container(
+          width: min(50.w, 400),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Flexible(
+                  child: ListView(
+                    children: [
+                      ListTile(
+                        selected: ModalRoute.of(context)?.settings.name ==
+                            GlobalKeyProvider.of(
+                              context,
+                            ).mainAppState.routes.routeMap[HomePage.routeKey]?.path,
+                        leading: const Icon(Icons.home),
+                        title: const Text('Home'),
+                        onTap: () {
+                          final globalKeyProvider = GlobalKeyProvider.of(
+                            context,
+                            listen: false,
+                          );
+                          final routes = globalKeyProvider.mainAppState.routes;
+                          final homePageRoute = routes.routeMap[HomePage.routeKey];
+                          if (homePageRoute == null) return;
+                          if (homePageRoute.path == ModalRoute.of(context)!.settings.name) {
+                            return;
+                          }
+                          globalKeyProvider.navigator.pushNamed(
+                            homePageRoute.path,
+                          );
+                        },
                       ),
-                    ),
-                    Row(
-                      children: [
-                        const Icon(Icons.dark_mode),
-                        const SizedBox(width: 12),
-                        const Text('Dark Mode'),
-                        const Spacer(),
-                        Switch(
-                          value: settingProvider.darkMode,
-                          onChanged: (value) {
-                            settingProvider.set(Setting.darkMode, value);
-                          },
-                        ),
-                      ],
+                      const ListTile(
+                        title: Text('About'),
+                      ),
+                      const ListTile(
+                        title: Text('Contact'),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.dark_mode),
+                    const SizedBox(width: 12),
+                    const Text('Dark Mode'),
+                    const Spacer(),
+                    Switch(
+                      value: settingProvider.darkMode,
+                      onChanged: (value) {
+                        settingProvider.set(Setting.darkMode, value);
+                      },
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
           ),
         ),
