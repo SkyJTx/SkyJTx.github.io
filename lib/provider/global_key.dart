@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
+import 'package:skyjtx_website/main.dart';
 
 class GlobalKeyProvider {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<ScaffoldMessengerState> scaffoldMsgKey = GlobalKey<ScaffoldMessengerState>();
+  final GlobalKey<MainAppState> mainAppStateKey = GlobalKey<MainAppState>();
 
   NavigatorState get navigator => navigatorKey.currentState!;
   ScaffoldMessengerState get scaffoldMsg => scaffoldMsgKey.currentState!;
+  MainAppState get mainAppState => mainAppStateKey.currentState!;
 
   static GlobalKeyProvider of(BuildContext context, {bool listen = true}) {
     return Provider.of<GlobalKeyProvider>(context, listen: listen);
