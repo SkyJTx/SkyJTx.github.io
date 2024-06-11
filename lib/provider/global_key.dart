@@ -12,7 +12,7 @@ class GlobalKeyProvider {
   ScaffoldMessengerState get scaffoldMsg => scaffoldMsgKey.currentState!;
   MainAppState get mainAppState => mainAppStateKey.currentState!;
 
-  static GlobalKeyProvider of(BuildContext context, {bool listen = true}) {
+  static GlobalKeyProvider of(BuildContext context, {bool listen = false}) {
     return Provider.of<GlobalKeyProvider>(context, listen: listen);
   }
 
@@ -23,7 +23,7 @@ class GlobalKeyProvider {
   }) {
     scaffoldMsg.showSnackBar(
       SnackBar(
-        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         margin: EdgeInsets.only(
           left: 70.w,
           right: 16,
@@ -36,7 +36,7 @@ class GlobalKeyProvider {
             IconButton(
               icon: Icon(
                 Icons.close,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
               onPressed: scaffoldMsg.hideCurrentSnackBar,
             ),
