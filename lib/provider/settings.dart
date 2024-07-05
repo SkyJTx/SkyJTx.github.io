@@ -59,6 +59,11 @@ class SettingsProvider extends ChangeNotifier {
           seedColor: primaryColor,
           brightness: darkMode ? Brightness.dark : Brightness.light,
         ),
+        textTheme: Typography.tall2021.apply(
+          fontSizeFactor: fontSize / 16.0,
+          displayColor: darkMode ? Colors.white : Colors.black,
+          bodyColor: darkMode ? Colors.white : Colors.black,
+        ),
         useMaterial3: true,
       );
 
@@ -91,13 +96,19 @@ class SettingsProvider extends ChangeNotifier {
   }
 
   FutureOr<void> remove(Setting setting) async {
-    await Setting.remove(setting);
+    await Setting.set(setting, setting.defaultValue);
 
     notifyListeners();
   }
 
-  FutureOr<void> reset() async {
-    await Setting.reset();
+  FutureOr<void> reset({Setting? setting}) async {
+    if (setting != null) {
+      await Setting.set(setting, setting.defaultValue);
+    } else {
+      await Future.wait([
+        for (final setting in Setting.values) Setting.set(setting, setting.defaultValue),
+      ]);
+    }
 
     notifyListeners();
   }
