@@ -1,12 +1,10 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:skyjtx_website/component/animated_background.dart';
+import 'package:skyjtx_website/constant/route.dart';
 import 'package:skyjtx_website/presentation/homepage/home.dart';
 import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
@@ -22,13 +20,14 @@ class CustomScaffold extends StatefulWidget {
 
 class CustomScaffoldState extends State<CustomScaffold> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController _fontSizeController = TextEditingController();
   ScaffoldState? get key => _scaffoldKey.currentState;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final settingProvider = Provider.of<SettingsProvider>(context);
-
+    _fontSizeController.text = settingProvider.fontSize.toString();
     return AnimatedBackground(
       curve: Curves.linear,
       duration: const Duration(seconds: 10),
@@ -85,9 +84,7 @@ class CustomScaffoldState extends State<CustomScaffold> {
                     children: [
                       ListTile(
                         selected: ModalRoute.of(context)?.settings.name ==
-                            GlobalKeyProvider.of(
-                              context,
-                            ).mainAppState.routes.routeMap[HomePage.routeKey]?.path,
+                            routes.routeMap[HomePage.routeKey]?.path,
                         leading: const Icon(Icons.home),
                         title: const Text('Home'),
                         onTap: () {
@@ -95,7 +92,6 @@ class CustomScaffoldState extends State<CustomScaffold> {
                             context,
                             listen: false,
                           );
-                          final routes = globalKeyProvider.mainAppState.routes;
                           final homePageRoute = routes.routeMap[HomePage.routeKey];
                           if (homePageRoute == null) return;
                           if (homePageRoute.path == ModalRoute.of(context)!.settings.name) {
@@ -128,6 +124,52 @@ class CustomScaffoldState extends State<CustomScaffold> {
                       },
                     ),
                   ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    const Icon(Icons.text_fields),
+                    const SizedBox(width: 12),
+                    Text(
+                      'Font Size: ${settingProvider.fontSize}',
+                    ),
+                    const Spacer(),
+                    Flexible(
+                      child: TextField(
+                        controller: _fontSizeController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Font Size',
+                        ),
+                        onEditingComplete: () {
+                          final double? fontSize = double.tryParse(_fontSizeController.text);
+                          if (fontSize == null) return;
+                          settingProvider.set(
+                            Setting.fontSize,
+                            fontSize.clamp(12, 24).toDouble(),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      backgroundColor: theme.colorScheme.secondary,
+                      foregroundColor: theme.colorScheme.onSecondary,
+                    ),
+                    onPressed: () {
+                      settingProvider.reset();
+                    },
+                    child: const Text('Reset Settings'),
+                  ),
                 ),
               ],
             ),
