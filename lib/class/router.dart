@@ -3,18 +3,20 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 
 class Route {
-  String key = '';
+  String key;
+  Key? widgetKey;
   String name;
   Widget Function(BuildContext, Widget)? wrapper;
-  Widget Function(BuildContext) builder;
+  Widget Function(BuildContext, Key?) builder;
   Route? parent;
   List<Route> children = [];
 
   Route({
     required this.key,
     required this.name,
-    this.wrapper,
     required this.builder,
+    this.widgetKey,
+    this.wrapper,
     required this.children,
   }) {
     for (final child in children) {
@@ -56,7 +58,7 @@ class Route {
 
   Widget build(BuildContext context) {
     wrapper ??= (context, child) => child;
-    return wrapper!(context, builder(context));
+    return wrapper!(context, builder(context, widgetKey ?? Key(key)));
   }
 
   @override
