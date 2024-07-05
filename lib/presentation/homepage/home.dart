@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:skyjtx_website/component/animated_circle_avatar.dart';
 import 'package:skyjtx_website/component/custom_scaffold.dart';
 import 'package:skyjtx_website/component/selectable_box.dart';
@@ -23,46 +23,61 @@ class HomePageState extends State<HomePage> {
   final GlobalKey<CustomScaffoldState> customScaffoldKey = GlobalKey();
   final scrollController = ScrollController();
 
-  Widget langRich(BuildContext context, String label, String url) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16),
-      child: Text.rich(
-        TextSpan(
-          children: [
-            const TextSpan(
-              text: "• ",
-            ),
-            TextSpan(
-              text: label,
-              style: const TextStyle(color: Colors.blueAccent),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () async {
-                  try {
-                    final launchSuccess = await launchUrl(Uri.parse(
-                      url,
-                    ));
-                    if (!launchSuccess) {
-                      if (!context.mounted) return;
-                      GlobalKeyProvider.of(context).showSnackBar(
-                        context,
-                        content: const Text('Failed to launch URL'),
-                      );
-                    } else {
-                      log('Launched URL: $url');
-                    }
-                  } catch (e) {
-                    log(e.toString());
-                    if (!context.mounted) return;
-                    GlobalKeyProvider.of(context).showSnackBar(
-                      context,
-                      content: const Text('Failed to launch URL'),
-                    );
-                  }
-                },
-            ),
-          ],
+  Widget langRich(BuildContext context, String label, String url, ImageProvider logo) {
+    return CustomWellBox(
+      width: 100,
+      height: 100,
+      label: Text(
+        label,
+        overflow: TextOverflow.ellipsis,
+      ),
+      onTap: () async {
+        try {
+          await launchUrl(Uri.parse(url));
+        } catch (e) {
+          log(e.toString());
+          if (!context.mounted) return;
+          GlobalKeyProvider.of(context).showSnackBar(
+            context,
+            content: const Text('Failed to launch URL'),
+          );
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image(
+            image: logo,
+            width: 50,
+            height: 50,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+              );
+            },
+            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+              if (wasSynchronouslyLoaded) {
+                return child;
+              }
+              return AnimatedOpacity(
+                opacity: frame == null ? 0 : 1,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOut,
+                child: child,
+              );
+            },
+            errorBuilder: (context, error, stackTrace) {
+              log(error.toString(), error: error, stackTrace: stackTrace);
+              return const Center(
+                child: Icon(Icons.error),
+              );
+            },
+          ),
         ),
-        textAlign: TextAlign.left,
       ),
     );
   }
@@ -102,16 +117,20 @@ class HomePageState extends State<HomePage> {
                         onTap: () {
                           animatedCircleAvatarKey.currentState?.controller.forward(from: 0);
                         },
-                        onLongPress: () {
-                          GlobalKeyProvider.of(context, listen: false).showSnackBar(
-                            context,
-                            content: Text(
-                              "อยากจะคิดถึงเธอ",
-                              style: theme.textTheme.bodyLarge?.copyWith(
-                                color: theme.colorScheme.onPrimary,
-                              ),
-                            ),
-                          );
+                        onLongPress: () async {
+                          try {
+                            const url = 'https://github.com/SkyJTx/';
+                            await launchUrl(Uri.parse(
+                              url,
+                            ));
+                          } catch (e) {
+                            log(e.toString());
+                            if (!context.mounted) return;
+                            GlobalKeyProvider.of(context).showSnackBar(
+                              context,
+                              content: const Text('Failed to launch URL'),
+                            );
+                          }
                         },
                       ),
                     ),
@@ -181,17 +200,62 @@ class HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  langRich(context, 'Python', 'https://www.python.org/'),
-                  const SizedBox(height: 4),
-                  langRich(context, 'Dart', 'https://dart.dev/'),
-                  const SizedBox(height: 4),
-                  langRich(context, 'Flutter', 'https://flutter.dev/'),
-                  const SizedBox(height: 4),
-                  langRich(context, 'Arduino', 'https://www.arduino.cc/'),
-                  const SizedBox(height: 4),
-                  langRich(context, 'Bun.js (JavaScript Runtime)', 'https://bun.sh/'),
-                  const SizedBox(height: 4),
-                  langRich(context, 'Next.js', 'https://nextjs.org/'),
+                  Align(
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 16,
+                      children: [
+                        langRich(
+                          context,
+                          'Python',
+                          'https://www.python.org/',
+                          const NetworkImage(
+                            'https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/community/logos/python-logo-only.png',
+                          ),
+                        ),
+                        langRich(
+                          context,
+                          'Dart',
+                          'https://dart.dev/',
+                          const AssetImage(
+                            'assets/icons/dart.png',
+                          ),
+                        ),
+                        langRich(
+                          context,
+                          'Flutter',
+                          'https://flutter.dev/',
+                          const AssetImage(
+                            'assets/icons/flutter.png',
+                          ),
+                        ),
+                        langRich(
+                          context,
+                          'Arduino',
+                          'https://www.arduino.cc/',
+                          const AssetImage(
+                            'assets/icons/arduino.png',
+                          ),
+                        ),
+                        langRich(
+                          context,
+                          'Bun.js (JavaScript Runtime)',
+                          'https://bun.sh/',
+                          const AssetImage(
+                            'assets/icons/bunjs.png',
+                          ),
+                        ),
+                        langRich(
+                          context,
+                          'Next.js',
+                          'https://nextjs.org/',
+                          const Svg(
+                            'assets/icons/nextjs.svg',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -235,7 +299,10 @@ class HomePageState extends State<HomePage> {
                             );
                           }
                         },
-                        child: const Icon(Icons.email),
+                        child: const Icon(
+                          Icons.email,
+                          size: 50,
+                        ),
                       ),
                       CustomWellBox(
                         width: 100,
