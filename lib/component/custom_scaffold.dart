@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:skyjtx_website/component/animated_background.dart';
 import 'package:skyjtx_website/constant/route.dart';
 import 'package:skyjtx_website/presentation/homepage/home.dart';
+import 'package:skyjtx_website/presentation/workspage/index.dart';
 import 'package:skyjtx_website/provider/global_key.dart';
 import 'package:skyjtx_website/provider/settings.dart';
 
@@ -97,13 +98,30 @@ class CustomScaffoldState extends State<CustomScaffold> {
                           if (homePageRoute.path == ModalRoute.of(context)!.settings.name) {
                             return;
                           }
-                          globalKeyProvider.navigator.pushNamed(
+                          Navigator.of(context).pushNamed(
                             homePageRoute.path,
                           );
                         },
                       ),
-                      const ListTile(
-                        title: Text('About'),
+                      ListTile(
+                        title: const Text('About'),
+                        selected: ModalRoute.of(context)?.settings.name ==
+                            routes.routeMap[WorksPage.routeKey]?.path,
+                        leading: const Icon(Icons.work_history),
+                        onTap: () {
+                          final globalKeyProvider = GlobalKeyProvider.of(
+                            context,
+                            listen: false,
+                          );
+                          final worksPageRoute = routes.routeMap[WorksPage.routeKey];
+                          if (worksPageRoute == null) return;
+                          if (worksPageRoute.path == ModalRoute.of(context)!.settings.name) {
+                            return;
+                          }
+                          Navigator.of(context).pushNamed(
+                            worksPageRoute.path,
+                          );
+                        },
                       ),
                       const ListTile(
                         title: Text('Contact'),
